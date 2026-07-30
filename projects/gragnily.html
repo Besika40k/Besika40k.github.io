@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <title>Gragnily - Besik Meskhia</title>
+    <meta name="description" content="Data analysis and visualization project (TODO details)."/>
+    <meta property="og:title" content="Gragnily"/>
+    <meta property="og:description" content="Data analysis and visualization project (TODO details)."/>
+    <meta property="og:type" content="website"/>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>BM</text></svg>">
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600&family=Libre+Caslon+Text:wght@400;700&display=swap" rel="stylesheet"/>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#2c2a1e",
+                        "inverse-primary": "#a93632",
+                        "primary-fixed-dim": "#ffb3ad",
+                        "tertiary-fixed": "#e4e2e5",
+                        "on-secondary": "#402d00",
+                        "outline": "#a68a88",
+                        "error-container": "#93000a",
+                        "tertiary": "#c8c6c9",
+                        "secondary": "#e9c16d",
+                        "secondary-container": "#6a4e00",
+                        "on-primary-fixed-variant": "#881e1e",
+                        "surface-container-highest": "#373529",
+                        "primary-fixed": "#ffdad6",
+                        "surface-container": "#222015",
+                        "on-primary-fixed": "#410003",
+                        "on-primary": "#68020a",
+                        "background": "#151309",
+                        "surface-bright": "#3c392d",
+                        "tertiary-container": "#48484b",
+                        "surface-dim": "#151309",
+                        "on-surface": "#e8e2d0",
+                        "on-error-container": "#ffdad6",
+                        "primary-container": "#8a1f1f",
+                        "on-tertiary": "#303033",
+                        "on-secondary-fixed-variant": "#5b4300",
+                        "on-primary-container": "#ff9c95",
+                        "on-error": "#690005",
+                        "on-secondary-container": "#e8c16d",
+                        "on-tertiary-fixed-variant": "#47464a",
+                        "on-tertiary-fixed": "#1b1b1e",
+                        "on-background": "#e8e2d0",
+                        "on-secondary-fixed": "#261a00",
+                        "inverse-surface": "#e8e2d0",
+                        "surface-variant": "#373529",
+                        "on-tertiary-container": "#b8b7ba",
+                        "surface-tint": "#ffb3ad",
+                        "on-surface-variant": "#dfbfbc",
+                        "surface-container-lowest": "#100e05",
+                        "outline-variant": "#58413f",
+                        "secondary-fixed": "#ffdf9f",
+                        "primary": "#ffb3ad",
+                        "inverse-on-surface": "#333124",
+                        "secondary-fixed-dim": "#e9c16d",
+                        "error": "#ffb4ab",
+                        "surface": "#151309",
+                        "surface-container-low": "#1e1c11",
+                        "tertiary-fixed-dim": "#c8c6c9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "unit": "8px",
+                        "section-gap": "128px",
+                        "container-max": "1200px",
+                        "margin-safe": "32px"
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="font-body-md text-body-md antialiased min-h-screen">
+    
+    <canvas id="bg-canvas" class="fixed inset-0 w-full h-full z-0 pointer-events-none"></canvas>
+    
+    <div class="relative z-10 flex flex-col min-h-screen">
+        
+        <nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-outline-variant/30">
+            <div class="flex flex-wrap justify-between items-center px-gutter py-unit max-w-container-max mx-auto">
+                <a href="../index.html" class="font-headline-md text-headline-md font-bold text-primary tracking-tighter relative z-[60]">BM</a>
+                
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="../index.html#about" class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300">About</a>
+                    <a href="../index.html#skills" class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300">Skills</a>
+                    <a href="../index.html#experience" class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300">Experience</a>
+                    <a href="../index.html#projects" class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300">Projects</a>
+                    <a href="../index.html#education" class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300">Education</a>
+                    <a href="../index.html#contact" class="inline-flex px-6 py-2 btn-primary rounded font-label-md ml-4">Contact Me</a>
+                </div>
+                
+                <button aria-label="Toggle Menu" class="md:hidden text-primary relative z-[60]" id="mobile-menu-btn">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+                </button>
+            </div>
+            
+            <div id="mobile-menu-overlay" class="fixed inset-0 bg-background/60 backdrop-blur-sm z-[55] hidden opacity-0 transition-opacity duration-300"></div>
+            <div id="mobile-menu-panel" class="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-surface-container-highest shadow-2xl z-[55] transform translate-x-full transition-transform duration-300 flex flex-col px-8 py-24 border-l border-outline-variant/30">
+                <button aria-label="Close Menu" class="absolute top-6 right-6 text-primary p-2" id="mobile-close-btn">
+                    <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 0;">close</span>
+                </button>
+                <div class="flex flex-col gap-8 text-center mt-8 overflow-y-auto">
+                    <a href="../index.html#about" class="mobile-nav-link text-2xl font-headline-sm text-on-surface-variant hover:text-primary transition-colors">About</a>
+                    <a href="../index.html#skills" class="mobile-nav-link text-2xl font-headline-sm text-on-surface-variant hover:text-primary transition-colors">Skills</a>
+                    <a href="../index.html#experience" class="mobile-nav-link text-2xl font-headline-sm text-on-surface-variant hover:text-primary transition-colors">Experience</a>
+                    <a href="../index.html#projects" class="mobile-nav-link text-2xl font-headline-sm text-on-surface-variant hover:text-primary transition-colors">Projects</a>
+                    <a href="../index.html#education" class="mobile-nav-link text-2xl font-headline-sm text-on-surface-variant hover:text-primary transition-colors">Education</a>
+                    <a href="../index.html#contact" class="mobile-nav-link inline-flex justify-center px-8 py-4 btn-primary rounded font-label-md mt-4 text-xl">Contact Me</a>
+                </div>
+            </div>
+        </nav>
+        
+        <main class="flex-grow pt-32 pb-20 px-gutter max-w-container-max mx-auto w-full">
+            
+            <a href="../index.html#projects" class="inline-flex items-center text-on-surface-variant hover:text-primary transition-colors mb-8 group">
+                <span class="material-symbols-outlined mr-2 transition-transform group-hover:-translate-x-1" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+                Back to Projects
+            </a>
+
+            <div class="glass-card rounded-lg p-8 md:p-12">
+                <h1 class="font-headline-xl text-primary mb-6">Gragnily (TODO)</h1>
+                
+                <div class="flex flex-wrap gap-4 mb-10 border-b border-outline-variant/30 pb-10">
+                    <a href="#" class="btn-outline px-6 py-2 rounded font-label-md inline-flex items-center opacity-50 cursor-not-allowed">
+                        <span class="material-symbols-outlined mr-2" style="font-variation-settings: 'FILL' 0;">code</span>
+                        Link Pending
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    
+                    <div class="md:col-span-2 space-y-8">
+                        <section>
+                            <h2 class="font-headline-md text-primary mb-4">Overview</h2>
+                            <p class="font-body-lg text-on-surface-variant leading-relaxed">
+                                TODO: confirm repo status and add real project details for Gragnily here.
+                            </p>
+                        </section>
+                    </div>
+
+                    <div>
+                        <div class="bg-surface-container-high border border-outline-variant/30 rounded-lg p-6 mb-8">
+                            <h3 class="font-headline-sm text-primary mb-4">Tech Stack</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-sm font-label-md bg-background text-secondary px-3 py-1 rounded border border-outline-variant/30">Data Analysis</span>
+                                <!-- TODO: Add specific tools once known -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+        
+        <footer class="bg-surface-container-lowest w-full py-12 border-t border-outline-variant/20 mt-auto">
+            <div class="flex flex-col items-center gap-4 text-center px-margin-safe">
+                <div class="font-headline-sm text-headline-sm text-primary mb-2">BM</div>
+                <div class="flex gap-6 mb-4">
+                    <a href="https://github.com/Besika40K" target="_blank" rel="noopener noreferrer" class="text-on-surface-variant hover:text-secondary transition-colors focus:ring-1 focus:ring-primary rounded px-2">GitHub</a>
+                    <a href="https://www.linkedin.com/in/besik-meskhia-743149208/" target="_blank" rel="noopener noreferrer" class="text-on-surface-variant hover:text-secondary transition-colors focus:ring-1 focus:ring-primary rounded px-2">LinkedIn</a>
+                </div>
+                <p class="font-body-md text-on-surface-variant opacity-60">&copy; 2024 Besik Meskhia. Forged in the abyss of code.</p>
+            </div>
+        </footer>
+        
+    </div>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
