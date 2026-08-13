@@ -1,467 +1,1039 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="dark scroll-smooth">
-<head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <!-- SEO & Open Graph Tags -->
     <title>Besik Meskhia - Full-Stack Developer</title>
-    <meta name="description" content="Portfolio of Besik Meskhia, a Full-Stack Developer & Robotics Mentor based in Kutaisi, Georgia."/>
-    <meta property="og:title" content="Besik Meskhia - Portfolio"/>
-    <meta property="og:description" content="Full-Stack Developer & Robotics Mentor based in Kutaisi, Georgia."/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:url" content="https://Besika40K.github.io/"/>
-    <!-- TODO: Add a real favicon, currently using a placeholder base64 to avoid 404 -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>BM</text></svg>">
+    <meta
+      name="description"
+      content="Portfolio of Besik Meskhia, a Full-Stack Developer & Robotics Mentor based in Kutaisi, Georgia."
+    />
+    <meta property="og:title" content="Besik Meskhia - Portfolio" />
+    <meta
+      property="og:description"
+      content="Full-Stack Developer & Robotics Mentor based in Kutaisi, Georgia."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://Besika40K.github.io/" />
+    <link rel="icon" type="image/jpeg" href="favicon.jpg" />
 
     <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
-    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600&family=Libre+Caslon+Text:wght@400;700&display=swap" rel="stylesheet"/>
-    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600&family=Libre+Caslon+Text:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "surface-container-high": "#2c2a1e",
-                        "inverse-primary": "#a93632",
-                        "primary-fixed-dim": "#ffb3ad",
-                        "tertiary-fixed": "#e4e2e5",
-                        "on-secondary": "#402d00",
-                        "outline": "#a68a88",
-                        "error-container": "#93000a",
-                        "tertiary": "#c8c6c9",
-                        "secondary": "#e9c16d",
-                        "secondary-container": "#6a4e00",
-                        "on-primary-fixed-variant": "#881e1e",
-                        "surface-container-highest": "#373529",
-                        "primary-fixed": "#ffdad6",
-                        "surface-container": "#222015",
-                        "on-primary-fixed": "#410003",
-                        "on-primary": "#68020a",
-                        "background": "#151309",
-                        "surface-bright": "#3c392d",
-                        "tertiary-container": "#48484b",
-                        "surface-dim": "#151309",
-                        "on-surface": "#e8e2d0",
-                        "on-error-container": "#ffdad6",
-                        "primary-container": "#8a1f1f",
-                        "on-tertiary": "#303033",
-                        "on-secondary-fixed-variant": "#5b4300",
-                        "on-primary-container": "#ff9c95",
-                        "on-error": "#690005",
-                        "on-secondary-container": "#e8c16d",
-                        "on-tertiary-fixed-variant": "#47464a",
-                        "on-tertiary-fixed": "#1b1b1e",
-                        "on-background": "#e8e2d0",
-                        "on-secondary-fixed": "#261a00",
-                        "inverse-surface": "#e8e2d0",
-                        "surface-variant": "#373529",
-                        "on-tertiary-container": "#b8b7ba",
-                        "surface-tint": "#ffb3ad",
-                        "on-surface-variant": "#dfbfbc",
-                        "surface-container-lowest": "#100e05",
-                        "outline-variant": "#58413f",
-                        "secondary-fixed": "#ffdf9f",
-                        "primary": "#ffb3ad",
-                        "inverse-on-surface": "#333124",
-                        "secondary-fixed-dim": "#e9c16d",
-                        "error": "#ffb4ab",
-                        "surface": "#151309",
-                        "surface-container-low": "#1e1c11",
-                        "tertiary-fixed-dim": "#c8c6c9"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "gutter": "24px",
-                        "unit": "8px",
-                        "section-gap": "128px",
-                        "container-max": "1200px",
-                        "margin-safe": "32px"
-                    },
-                    "fontFamily": {
-                        "body-md": ["Geist", "sans-serif"],
-                        "headline-xl": ["Libre Caslon Text", "serif"],
-                        "body-lg": ["Geist", "sans-serif"],
-                        "headline-xl-mobile": ["Libre Caslon Text", "serif"],
-                        "headline-sm": ["Libre Caslon Text", "serif"],
-                        "headline-md": ["Libre Caslon Text", "serif"],
-                        "label-md": ["Geist", "sans-serif"],
-                        "headline-lg": ["Libre Caslon Text", "serif"]
-                    }
-                }
-            }
-        }
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-high": "#2c2a1e",
+              "inverse-primary": "#a93632",
+              "primary-fixed-dim": "#ffb3ad",
+              "tertiary-fixed": "#e4e2e5",
+              "on-secondary": "#402d00",
+              outline: "#a68a88",
+              "error-container": "#93000a",
+              tertiary: "#c8c6c9",
+              secondary: "#e9c16d",
+              "secondary-container": "#6a4e00",
+              "on-primary-fixed-variant": "#881e1e",
+              "surface-container-highest": "#373529",
+              "primary-fixed": "#ffdad6",
+              "surface-container": "#222015",
+              "on-primary-fixed": "#410003",
+              "on-primary": "#68020a",
+              background: "#151309",
+              "surface-bright": "#3c392d",
+              "tertiary-container": "#48484b",
+              "surface-dim": "#151309",
+              "on-surface": "#e8e2d0",
+              "on-error-container": "#ffdad6",
+              "primary-container": "#8a1f1f",
+              "on-tertiary": "#303033",
+              "on-secondary-fixed-variant": "#5b4300",
+              "on-primary-container": "#ff9c95",
+              "on-error": "#690005",
+              "on-secondary-container": "#e8c16d",
+              "on-tertiary-fixed-variant": "#47464a",
+              "on-tertiary-fixed": "#1b1b1e",
+              "on-background": "#e8e2d0",
+              "on-secondary-fixed": "#261a00",
+              "inverse-surface": "#e8e2d0",
+              "surface-variant": "#373529",
+              "on-tertiary-container": "#b8b7ba",
+              "surface-tint": "#ffb3ad",
+              "on-surface-variant": "#dfbfbc",
+              "surface-container-lowest": "#100e05",
+              "outline-variant": "#58413f",
+              "secondary-fixed": "#ffdf9f",
+              primary: "#ffb3ad",
+              "inverse-on-surface": "#333124",
+              "secondary-fixed-dim": "#e9c16d",
+              error: "#ffb4ab",
+              surface: "#151309",
+              "surface-container-low": "#1e1c11",
+              "tertiary-fixed-dim": "#c8c6c9",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              gutter: "24px",
+              unit: "8px",
+              "section-gap": "128px",
+              "container-max": "1200px",
+              "margin-safe": "32px",
+            },
+            fontFamily: {
+              "body-md": ["Geist", "sans-serif"],
+              "headline-xl": ["Libre Caslon Text", "serif"],
+              "body-lg": ["Geist", "sans-serif"],
+              "headline-xl-mobile": ["Libre Caslon Text", "serif"],
+              "headline-sm": ["Libre Caslon Text", "serif"],
+              "headline-md": ["Libre Caslon Text", "serif"],
+              "label-md": ["Geist", "sans-serif"],
+              "headline-lg": ["Libre Caslon Text", "serif"],
+            },
+          },
+        },
+      };
     </script>
-    
+
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body class="font-body-md text-body-md antialiased min-h-screen">
-    
-    <canvas id="bg-canvas" class="fixed inset-0 w-full h-full z-0 pointer-events-none"></canvas>
-    
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body class="font-body-md text-body-md antialiased min-h-screen">
+    <canvas
+      id="bg-canvas"
+      class="fixed inset-0 w-full h-full z-0 pointer-events-none"
+    ></canvas>
+
     <div class="relative z-10 flex flex-col min-h-screen">
-        
-        <!-- Navbar -->
-        <nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-outline-variant/30">
-            <div class="flex flex-wrap justify-between items-center px-gutter py-unit max-w-container-max mx-auto">
-                <a href="#home" class="font-headline-md text-headline-md font-bold text-primary tracking-tighter relative z-[60]">BM</a>
-                
-                <!-- Desktop Nav -->
-                <div class="hidden md:flex items-center gap-8">
-                    <a href="#about" class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300">About</a>
-                    <a href="#skills" class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300">Skills</a>
-                    <a href="#experience" class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300">Experience</a>
-                    <a href="#projects" class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300">Projects</a>
-                    <a href="#education" class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300">Education</a>
-                    <a href="#contact" class="inline-flex px-6 py-2 btn-primary rounded font-label-md ml-4">Contact Me</a>
-                </div>
+      <!-- Navbar -->
+      <nav
+        class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-outline-variant/30"
+      >
+        <div
+          class="flex flex-wrap justify-between items-center px-gutter py-unit max-w-container-max mx-auto"
+        >
+          <a
+            href="#home"
+            class="font-headline-md text-headline-md font-bold text-primary tracking-tighter relative z-[60]"
+            >BM</a
+          >
 
-                <!-- Mobile Menu Button -->
-                <button aria-label="Toggle Menu" class="md:hidden text-primary relative z-[60]" id="mobile-menu-btn">
-                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
-                </button>
+          <!-- Desktop Nav -->
+          <div class="hidden md:flex items-center gap-8">
+            <a
+              href="#about"
+              class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300"
+              >About</a
+            >
+            <a
+              href="#skills"
+              class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300"
+              >Skills</a
+            >
+            <a
+              href="#experience"
+              class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300"
+              >Experience</a
+            >
+            <a
+              href="#projects"
+              class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300"
+              >Projects</a
+            >
+            <a
+              href="#education"
+              class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300"
+              >Education</a
+            >
+            <a
+              href="#contact"
+              class="inline-flex px-6 py-2 btn-primary rounded font-label-md ml-4"
+              >Contact Me</a
+            >
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button
+            aria-label="Toggle Menu"
+            class="md:hidden text-primary relative z-[60]"
+            id="mobile-menu-btn"
+          >
+            <span
+              class="material-symbols-outlined"
+              style="font-variation-settings: &quot;FILL&quot; 0"
+              >menu</span
+            >
+          </button>
+        </div>
+
+        <!-- Mobile Slide-in Menu -->
+        <div
+          id="mobile-menu-overlay"
+          class="fixed inset-0 bg-background/60 backdrop-blur-sm z-[55] hidden opacity-0 transition-opacity duration-300"
+        ></div>
+        <div
+          id="mobile-menu-panel"
+          class="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-surface-container-highest shadow-2xl z-[55] transform translate-x-full transition-transform duration-300 flex flex-col px-8 py-24 border-l border-outline-variant/30"
+        >
+          <button
+            aria-label="Close Menu"
+            class="absolute top-6 right-6 text-primary p-2"
+            id="mobile-close-btn"
+          >
+            <span
+              class="material-symbols-outlined text-3xl"
+              style="font-variation-settings: &quot;FILL&quot; 0"
+              >close</span
+            >
+          </button>
+          <div class="flex flex-col gap-8 text-center mt-8 overflow-y-auto">
+            <a
+              href="#about"
+              class="mobile-nav-link text-2xl font-headline-sm text-on-surface-variant hover:text-primary transition-colors"
+              >About</a
+            >
+            <a
+              href="#skills"
+              class="mobile-nav-link text-2xl font-headline-sm text-on-surface-variant hover:text-primary transition-colors"
+              >Skills</a
+            >
+            <a
+              href="#experience"
+              class="mobile-nav-link text-2xl font-headline-sm text-on-surface-variant hover:text-primary transition-colors"
+              >Experience</a
+            >
+            <a
+              href="#projects"
+              class="mobile-nav-link text-2xl font-headline-sm text-on-surface-variant hover:text-primary transition-colors"
+              >Projects</a
+            >
+            <a
+              href="#education"
+              class="mobile-nav-link text-2xl font-headline-sm text-on-surface-variant hover:text-primary transition-colors"
+              >Education</a
+            >
+            <a
+              href="#contact"
+              class="mobile-nav-link inline-flex justify-center px-8 py-4 btn-primary rounded font-label-md mt-4 text-xl"
+              >Contact Me</a
+            >
+          </div>
+        </div>
+      </nav>
+
+      <main class="flex-grow">
+        <!-- Hero Section -->
+        <section
+          id="home"
+          class="min-h-screen flex flex-col items-center justify-center px-gutter pt-24 relative text-center"
+        >
+          <div
+            class="absolute inset-0 z-0 pointer-events-none"
+            style="
+              background-image: url(&quot;thumb-1920-666343.jpg&quot;);
+              background-size: cover;
+              background-position: center;
+              background-repeat: no-repeat;
+            "
+          ></div>
+          <div
+            class="absolute inset-0 z-0 bg-background/70 pointer-events-none"
+          ></div>
+          <div
+            class="absolute inset-0 z-0 opacity-20 pointer-events-none"
+            style="
+              background: radial-gradient(
+                circle at center,
+                rgba(138, 31, 31, 0.15) 0%,
+                transparent 70%
+              );
+            "
+          ></div>
+          <div class="z-10 flex flex-col items-center">
+            <h1
+              class="font-headline-xl-mobile md:font-headline-xl text-primary mb-4"
+            >
+              Besik Meskhia
+            </h1>
+            <p class="font-body-lg text-on-surface-variant mb-10 max-w-2xl">
+              Full-Stack Developer & Robotics Mentor. Forging digital
+              architecture with the precision of dark metallurgy.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a
+                href="#projects"
+                class="btn-primary px-8 py-3 rounded font-label-md"
+                >View Projects</a
+              >
+              <!-- Upload your CV in the chat and I'll place it here, or name it CV.pdf in your project root -->
+              <a
+                href="CV.pdf"
+                class="btn-outline px-8 py-3 rounded font-label-md"
+                target="_blank"
+                >Download CV</a
+              >
             </div>
-            
-            <!-- Mobile Slide-in Menu -->
-            <div id="mobile-menu-overlay" class="fixed inset-0 bg-background/60 backdrop-blur-sm z-[55] hidden opacity-0 transition-opacity duration-300"></div>
-            <div id="mobile-menu-panel" class="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-surface-container-highest shadow-2xl z-[55] transform translate-x-full transition-transform duration-300 flex flex-col px-8 py-24 border-l border-outline-variant/30">
-                <button aria-label="Close Menu" class="absolute top-6 right-6 text-primary p-2" id="mobile-close-btn">
-                    <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 0;">close</span>
-                </button>
-                <div class="flex flex-col gap-8 text-center mt-8 overflow-y-auto">
-                    <a href="#about" class="mobile-nav-link text-2xl font-headline-sm text-on-surface-variant hover:text-primary transition-colors">About</a>
-                    <a href="#skills" class="mobile-nav-link text-2xl font-headline-sm text-on-surface-variant hover:text-primary transition-colors">Skills</a>
-                    <a href="#experience" class="mobile-nav-link text-2xl font-headline-sm text-on-surface-variant hover:text-primary transition-colors">Experience</a>
-                    <a href="#projects" class="mobile-nav-link text-2xl font-headline-sm text-on-surface-variant hover:text-primary transition-colors">Projects</a>
-                    <a href="#education" class="mobile-nav-link text-2xl font-headline-sm text-on-surface-variant hover:text-primary transition-colors">Education</a>
-                    <a href="#contact" class="mobile-nav-link inline-flex justify-center px-8 py-4 btn-primary rounded font-label-md mt-4 text-xl">Contact Me</a>
-                </div>
+          </div>
+        </section>
+
+        <div class="ornate-divider">
+          <div class="ornate-divider-icon"></div>
+        </div>
+
+        <!-- About Me Section -->
+        <section
+          id="about"
+          class="py-section-gap px-gutter max-w-container-max mx-auto text-center"
+        >
+          <h2 class="font-headline-lg text-primary mb-12">About Me</h2>
+          <p
+            class="font-body-lg text-on-surface-variant max-w-3xl mx-auto leading-relaxed"
+          >
+            Full-stack developer based in Kutaisi, Georgia, currently working as
+            a Web Programmer at Kutaisi International University and a
+            robotics/coding mentor at Steve Jobs American Academy. I specialize
+            in crafting robust, scalable applications and thrive at the
+            intersection of web development, education, and modern software
+            architecture.
+          </p>
+        </section>
+
+        <div class="ornate-divider">
+          <div class="ornate-divider-icon"></div>
+        </div>
+
+        <!-- Skills Section -->
+        <section
+          id="skills"
+          class="py-section-gap px-gutter max-w-container-max mx-auto"
+        >
+          <h2 class="font-headline-lg text-primary text-center mb-16">
+            Skills
+          </h2>
+          <div
+            class="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto"
+            id="skills-container"
+          >
+            <!-- Added via JS or statically here -->
+            <div
+              class="skill-badge rounded px-6 py-3 text-center cursor-default"
+            >
+              <span class="font-label-md text-on-surface-variant">React</span>
             </div>
-        </nav>
-        
-        <main class="flex-grow">
-            
-            <!-- Hero Section -->
-            <section id="home" class="min-h-screen flex flex-col items-center justify-center px-gutter pt-24 relative text-center">
-                <div class="absolute inset-0 z-0 pointer-events-none" style="background-image: url('thumb-1920-666343.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
-                <div class="absolute inset-0 z-0 bg-background/70 pointer-events-none"></div>
-                <div class="absolute inset-0 z-0 opacity-20 pointer-events-none" style="background: radial-gradient(circle at center, rgba(138,31,31,0.15) 0%, transparent 70%);"></div>
-                <div class="z-10 flex flex-col items-center">
-                    <h1 class="font-headline-xl-mobile md:font-headline-xl text-primary mb-4">Besik Meskhia</h1>
-                    <p class="font-body-lg text-on-surface-variant mb-10 max-w-2xl">
-                        Full-Stack Developer & Robotics Mentor. Forging digital architecture with the precision of dark metallurgy.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#projects" class="btn-primary px-8 py-3 rounded font-label-md">View Projects</a>
-                        <!-- TODO: Replace placeholder with actual CV file path -->
-                        <a href="#" class="btn-outline px-8 py-3 rounded font-label-md">Download CV</a>
-                    </div>
+            <div
+              class="skill-badge rounded px-6 py-3 text-center cursor-default"
+            >
+              <span class="font-label-md text-on-surface-variant">Next.js</span>
+            </div>
+            <div
+              class="skill-badge rounded px-6 py-3 text-center cursor-default"
+            >
+              <span class="font-label-md text-on-surface-variant"
+                >Tailwind CSS</span
+              >
+            </div>
+            <div
+              class="skill-badge rounded px-6 py-3 text-center cursor-default"
+            >
+              <span class="font-label-md text-on-surface-variant"
+                >JavaScript</span
+              >
+            </div>
+            <div
+              class="skill-badge rounded px-6 py-3 text-center cursor-default"
+            >
+              <span class="font-label-md text-on-surface-variant"
+                >HTML/CSS</span
+              >
+            </div>
+            <div
+              class="skill-badge rounded px-6 py-3 text-center cursor-default"
+            >
+              <span class="font-label-md text-on-surface-variant">Python</span>
+            </div>
+            <div
+              class="skill-badge rounded px-6 py-3 text-center cursor-default"
+            >
+              <span class="font-label-md text-on-surface-variant">C++</span>
+            </div>
+            <div
+              class="skill-badge rounded px-6 py-3 text-center cursor-default"
+            >
+              <span class="font-label-md text-on-surface-variant">C#</span>
+            </div>
+            <div
+              class="skill-badge rounded px-6 py-3 text-center cursor-default"
+            >
+              <span class="font-label-md text-on-surface-variant">.NET</span>
+            </div>
+            <div
+              class="skill-badge rounded px-6 py-3 text-center cursor-default"
+            >
+              <span class="font-label-md text-on-surface-variant"
+                >SQL/PostgreSQL</span
+              >
+            </div>
+            <div
+              class="skill-badge rounded px-6 py-3 text-center cursor-default"
+            >
+              <span class="font-label-md text-on-surface-variant"
+                >Git/GitHub</span
+              >
+            </div>
+            <div
+              class="skill-badge rounded px-6 py-3 text-center cursor-default"
+            >
+              <span class="font-label-md text-on-surface-variant">Pygame</span>
+            </div>
+            <div
+              class="skill-badge rounded px-6 py-3 text-center cursor-default"
+            >
+              <span class="font-label-md text-on-surface-variant">SASS</span>
+            </div>
+            <div
+              class="skill-badge rounded px-6 py-3 text-center cursor-default"
+            >
+              <span class="font-label-md text-on-surface-variant"
+                >Design Patterns & SOLID</span
+              >
+            </div>
+            <div
+              class="skill-badge rounded px-6 py-3 text-center cursor-default"
+            >
+              <span class="font-label-md text-on-surface-variant"
+                >Teaching/Mentoring</span
+              >
+            </div>
+          </div>
+        </section>
+
+        <div class="ornate-divider">
+          <div class="ornate-divider-icon"></div>
+        </div>
+
+        <!-- Experience Section -->
+        <section
+          id="experience"
+          class="py-section-gap px-gutter max-w-container-max mx-auto"
+        >
+          <h2 class="font-headline-lg text-primary text-center mb-16">
+            Experience
+          </h2>
+          <div class="max-w-4xl mx-auto space-y-8">
+            <div
+              class="glass-card p-8 rounded-lg relative pl-12 border-l-4 border-l-primary/50"
+            >
+              <div
+                class="absolute -left-3 top-8 w-5 h-5 rounded-full bg-primary border-4 border-background"
+              ></div>
+              <h3 class="font-headline-sm text-primary">Web Programmer</h3>
+              <p class="font-label-md text-secondary mb-4">
+                Kutaisi International University | Oct 2025 - Present
+              </p>
+              <ul
+                class="list-disc list-inside text-on-surface-variant space-y-2 opacity-80"
+              >
+                <li>
+                  Develop and maintain internal web applications and digital
+                  tools.
+                </li>
+                <li>
+                  Collaborate with faculty and administration to streamline
+                  university operations via software solutions.
+                </li>
+              </ul>
+            </div>
+
+            <div
+              class="glass-card p-8 rounded-lg relative pl-12 border-l-4 border-l-primary/50"
+            >
+              <div
+                class="absolute -left-3 top-8 w-5 h-5 rounded-full bg-primary border-4 border-background"
+              ></div>
+              <h3 class="font-headline-sm text-primary">
+                Robotics & Coding Mentor
+              </h3>
+              <p class="font-label-md text-secondary mb-4">
+                Steve Jobs American Academy | Sep 2025 - Present
+              </p>
+              <ul
+                class="list-disc list-inside text-on-surface-variant space-y-2 opacity-80"
+              >
+                <li>
+                  Instruct students in fundamental programming concepts,
+                  algorithmic thinking, and robotics.
+                </li>
+                <li>
+                  Design and facilitate hands-on projects utilizing Python and
+                  C++.
+                </li>
+              </ul>
+            </div>
+
+            <div
+              class="glass-card p-8 rounded-lg relative pl-12 border-l-4 border-l-primary/50"
+            >
+              <div
+                class="absolute -left-3 top-8 w-5 h-5 rounded-full bg-primary border-4 border-background"
+              ></div>
+              <h3 class="font-headline-sm text-primary">Web Programmer</h3>
+              <p class="font-label-md text-secondary mb-4">
+                Startup (Kutaisi) | Apr 2025 - Jun 2025
+              </p>
+              <ul
+                class="list-disc list-inside text-on-surface-variant space-y-2 opacity-80"
+              >
+                <li>
+                  Contributed to the frontend and backend architecture of an
+                  early-stage startup product.
+                </li>
+                <li>
+                  Implemented responsive UI components and integrated RESTful
+                  APIs.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <div class="ornate-divider">
+          <div class="ornate-divider-icon"></div>
+        </div>
+
+        <!-- Projects Section -->
+        <section
+          id="projects"
+          class="py-section-gap px-gutter max-w-container-max mx-auto"
+        >
+          <h2 class="font-headline-lg text-primary text-center mb-16">
+            Projects
+          </h2>
+
+          <!-- Web Development -->
+          <div class="mb-16">
+            <h3
+              class="font-headline-md text-secondary border-b border-outline-variant/30 pb-4 mb-8"
+            >
+              Web Development
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <a
+                href="projects/loan-management-api.html"
+                class="glass-card rounded-lg p-6 flex flex-col transition-transform hover:-translate-y-1"
+              >
+                <div
+                  class="w-full h-40 bg-surface-container-high rounded mb-4 overflow-hidden border border-outline-variant/20 flex items-center justify-center relative group"
+                >
+                  <img
+                    src="placeholder.jpg"
+                    alt="Project Thumbnail"
+                    class="w-full h-full object-cover opacity-60 mix-blend-overlay group-hover:opacity-80 transition-opacity"
+                  />
                 </div>
-            </section>
-            
-            <div class="ornate-divider"><div class="ornate-divider-icon"></div></div>
-            
-            <!-- About Me Section -->
-            <section id="about" class="py-section-gap px-gutter max-w-container-max mx-auto text-center">
-                <h2 class="font-headline-lg text-primary mb-12">About Me</h2>
-                <p class="font-body-lg text-on-surface-variant max-w-3xl mx-auto leading-relaxed">
-                    Full-stack developer based in Kutaisi, Georgia, currently working as a Web Programmer at Kutaisi International University and a robotics/coding mentor at Steve Jobs American Academy. I specialize in crafting robust, scalable applications and thrive at the intersection of web development, education, and modern software architecture.
+                <h4 class="font-headline-sm text-primary mb-2">
+                  Loan Management API
+                </h4>
+                <p class="font-body-md text-on-surface-variant mb-4 flex-grow">
+                  A RESTful loan management API built in ASP.NET Core 8.0 with
+                  JWT authentication and role-based access control.
                 </p>
-            </section>
-
-            <div class="ornate-divider"><div class="ornate-divider-icon"></div></div>
-
-            <!-- Skills Section -->
-            <section id="skills" class="py-section-gap px-gutter max-w-container-max mx-auto">
-                <h2 class="font-headline-lg text-primary text-center mb-16">Skills</h2>
-                <div class="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto" id="skills-container">
-                    <!-- Added via JS or statically here -->
-                    <div class="skill-badge rounded px-6 py-3 text-center cursor-default"><span class="font-label-md text-on-surface-variant">React</span></div>
-                    <div class="skill-badge rounded px-6 py-3 text-center cursor-default"><span class="font-label-md text-on-surface-variant">Next.js</span></div>
-                    <div class="skill-badge rounded px-6 py-3 text-center cursor-default"><span class="font-label-md text-on-surface-variant">Tailwind CSS</span></div>
-                    <div class="skill-badge rounded px-6 py-3 text-center cursor-default"><span class="font-label-md text-on-surface-variant">JavaScript</span></div>
-                    <div class="skill-badge rounded px-6 py-3 text-center cursor-default"><span class="font-label-md text-on-surface-variant">HTML/CSS</span></div>
-                    <div class="skill-badge rounded px-6 py-3 text-center cursor-default"><span class="font-label-md text-on-surface-variant">Python</span></div>
-                    <div class="skill-badge rounded px-6 py-3 text-center cursor-default"><span class="font-label-md text-on-surface-variant">C++</span></div>
-                    <div class="skill-badge rounded px-6 py-3 text-center cursor-default"><span class="font-label-md text-on-surface-variant">C#</span></div>
-                    <div class="skill-badge rounded px-6 py-3 text-center cursor-default"><span class="font-label-md text-on-surface-variant">.NET</span></div>
-                    <div class="skill-badge rounded px-6 py-3 text-center cursor-default"><span class="font-label-md text-on-surface-variant">SQL/PostgreSQL</span></div>
-                    <div class="skill-badge rounded px-6 py-3 text-center cursor-default"><span class="font-label-md text-on-surface-variant">Git/GitHub</span></div>
-                    <div class="skill-badge rounded px-6 py-3 text-center cursor-default"><span class="font-label-md text-on-surface-variant">Pygame</span></div>
-                    <div class="skill-badge rounded px-6 py-3 text-center cursor-default"><span class="font-label-md text-on-surface-variant">SASS</span></div>
-                    <div class="skill-badge rounded px-6 py-3 text-center cursor-default"><span class="font-label-md text-on-surface-variant">Design Patterns & SOLID</span></div>
-                    <div class="skill-badge rounded px-6 py-3 text-center cursor-default"><span class="font-label-md text-on-surface-variant">Teaching/Mentoring</span></div>
+                <div class="flex flex-wrap gap-2 mt-auto">
+                  <span
+                    class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30"
+                    >ASP.NET Core</span
+                  >
+                  <span
+                    class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30"
+                    >SQL Server</span
+                  >
                 </div>
-            </section>
-            
-            <div class="ornate-divider"><div class="ornate-divider-icon"></div></div>
+              </a>
 
-            <!-- Experience Section -->
-            <section id="experience" class="py-section-gap px-gutter max-w-container-max mx-auto">
-                <h2 class="font-headline-lg text-primary text-center mb-16">Experience</h2>
-                <div class="max-w-4xl mx-auto space-y-8">
-                    
-                    <div class="glass-card p-8 rounded-lg relative pl-12 border-l-4 border-l-primary/50">
-                        <div class="absolute -left-3 top-8 w-5 h-5 rounded-full bg-primary border-4 border-background"></div>
-                        <h3 class="font-headline-sm text-primary">Web Programmer</h3>
-                        <p class="font-label-md text-secondary mb-4">Kutaisi International University | Oct 2025 - Present</p>
-                        <ul class="list-disc list-inside text-on-surface-variant space-y-2 opacity-80">
-                            <li>Develop and maintain internal web applications and digital tools.</li>
-                            <li>Collaborate with faculty and administration to streamline university operations via software solutions.</li>
-                        </ul>
-                    </div>
-
-                    <div class="glass-card p-8 rounded-lg relative pl-12 border-l-4 border-l-primary/50">
-                        <div class="absolute -left-3 top-8 w-5 h-5 rounded-full bg-primary border-4 border-background"></div>
-                        <h3 class="font-headline-sm text-primary">Robotics & Coding Mentor</h3>
-                        <p class="font-label-md text-secondary mb-4">Steve Jobs American Academy | Sep 2025 - Present</p>
-                        <ul class="list-disc list-inside text-on-surface-variant space-y-2 opacity-80">
-                            <li>Instruct students in fundamental programming concepts, algorithmic thinking, and robotics.</li>
-                            <li>Design and facilitate hands-on projects utilizing Python and C++.</li>
-                        </ul>
-                    </div>
-
-                    <div class="glass-card p-8 rounded-lg relative pl-12 border-l-4 border-l-primary/50">
-                        <div class="absolute -left-3 top-8 w-5 h-5 rounded-full bg-primary border-4 border-background"></div>
-                        <h3 class="font-headline-sm text-primary">Web Programmer</h3>
-                        <p class="font-label-md text-secondary mb-4">Startup (Kutaisi) | Apr 2025 - Jun 2025</p>
-                        <ul class="list-disc list-inside text-on-surface-variant space-y-2 opacity-80">
-                            <li>Contributed to the frontend and backend architecture of an early-stage startup product.</li>
-                            <li>Implemented responsive UI components and integrated RESTful APIs.</li>
-                        </ul>
-                    </div>
-
+              <a
+                href="projects/bandersnatch.html"
+                class="glass-card rounded-lg p-6 flex flex-col transition-transform hover:-translate-y-1"
+              >
+                <div
+                  class="w-full h-40 bg-surface-container-high rounded mb-4 overflow-hidden border border-outline-variant/20 flex items-center justify-center relative group"
+                >
+                  <img
+                    src="placeholder.jpg"
+                    alt="Project Thumbnail"
+                    class="w-full h-full object-cover opacity-60 mix-blend-overlay group-hover:opacity-80 transition-opacity"
+                  />
                 </div>
-            </section>
-
-            <div class="ornate-divider"><div class="ornate-divider-icon"></div></div>
-
-            <!-- Projects Section -->
-            <section id="projects" class="py-section-gap px-gutter max-w-container-max mx-auto">
-                <h2 class="font-headline-lg text-primary text-center mb-16">Projects</h2>
-                
-                <!-- Web Development -->
-                <div class="mb-16">
-                    <h3 class="font-headline-md text-secondary border-b border-outline-variant/30 pb-4 mb-8">Web Development</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        
-                        <a href="projects/loan-management-api.html" class="glass-card rounded-lg p-6 flex flex-col transition-transform hover:-translate-y-1">
-                            <div class="w-full h-40 bg-surface-container-high rounded mb-4 overflow-hidden border border-outline-variant/20 flex items-center justify-center relative group">
-                                <span class="text-on-surface-variant opacity-50 z-10 font-label-md tracking-wider">TODO: Thumbnail</span>
-                            </div>
-                            <h4 class="font-headline-sm text-primary mb-2">Loan Management API</h4>
-                            <p class="font-body-md text-on-surface-variant mb-4 flex-grow">A RESTful loan management API built in ASP.NET Core 8.0 with JWT authentication and role-based access control.</p>
-                            <div class="flex flex-wrap gap-2 mt-auto">
-                                <span class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30">ASP.NET Core</span>
-                                <span class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30">SQL Server</span>
-                            </div>
-                        </a>
-
-                        <a href="projects/bandersnatch.html" class="glass-card rounded-lg p-6 flex flex-col transition-transform hover:-translate-y-1">
-                            <div class="w-full h-40 bg-surface-container-high rounded mb-4 overflow-hidden border border-outline-variant/20 flex items-center justify-center relative group">
-                                <span class="text-on-surface-variant opacity-50 z-10 font-label-md tracking-wider">TODO: Thumbnail</span>
-                            </div>
-                            <h4 class="font-headline-sm text-primary mb-2">Bandersnatch (Bus #3)</h4>
-                            <p class="font-body-md text-on-surface-variant mb-4 flex-grow">A mobile-first web app helping KIU students get an honest, real-time status check on the campus shuttle bus.</p>
-                            <div class="flex flex-wrap gap-2 mt-auto">
-                                <span class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30">Next.js</span>
-                                <span class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30">Firebase</span>
-                            </div>
-                        </a>
-                        
-                        <a href="projects/kiu-website.html" class="glass-card rounded-lg p-6 flex flex-col transition-transform hover:-translate-y-1">
-                            <div class="w-full h-40 bg-surface-container-high rounded mb-4 overflow-hidden border border-outline-variant/20 flex items-center justify-center relative group">
-                                <span class="text-on-surface-variant opacity-50 z-10 font-label-md tracking-wider">TODO: Thumbnail</span>
-                            </div>
-                            <h4 class="font-headline-sm text-primary mb-2">KIU Official Website</h4>
-                            <p class="font-body-md text-on-surface-variant mb-4 flex-grow">Contributed front-end development work on the official website for Kutaisi International University.</p>
-                            <div class="flex flex-wrap gap-2 mt-auto">
-                                <span class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30">React</span>
-                                <span class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30">Tailwind CSS</span>
-                            </div>
-                        </a>
-                        
-                        <a href="projects/gragnily.html" class="glass-card rounded-lg p-6 flex flex-col transition-transform hover:-translate-y-1">
-                            <div class="w-full h-40 bg-surface-container-high rounded mb-4 overflow-hidden border border-outline-variant/20 flex items-center justify-center relative group">
-                                <span class="text-on-surface-variant opacity-50 z-10 font-label-md tracking-wider">TODO: Thumbnail</span>
-                            </div>
-                            <h4 class="font-headline-sm text-primary mb-2">Gragnily (TODO)</h4>
-                            <p class="font-body-md text-on-surface-variant mb-4 flex-grow">TODO: confirm repo status and add real project details for Gragnily.</p>
-                            <div class="flex flex-wrap gap-2 mt-auto">
-                                <span class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30">Data Analysis</span>
-                            </div>
-                        </a>
-
-                    </div>
-                </div>
-
-                <!-- Machine Learning & Data Analysis -->
-                <div>
-                    <h3 class="font-headline-md text-secondary border-b border-outline-variant/30 pb-4 mb-8">Machine Learning & Data Analysis</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        
-                        <a href="projects/image-captioning.html" class="glass-card rounded-lg p-6 flex flex-col transition-transform hover:-translate-y-1">
-                            <div class="w-full h-40 bg-surface-container-high rounded mb-4 overflow-hidden border border-outline-variant/20 flex items-center justify-center relative group">
-                                <span class="text-on-surface-variant opacity-50 z-10 font-label-md tracking-wider">TODO: Thumbnail</span>
-                            </div>
-                            <h4 class="font-headline-sm text-primary mb-2">Image Captioning</h4>
-                            <p class="font-body-md text-on-surface-variant mb-4 flex-grow">A neural network system that generates natural-language captions for images, using a ResNet50 encoder and LSTM decoder.</p>
-                            <div class="flex flex-wrap gap-2 mt-auto">
-                                <span class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30">Python</span>
-                                <span class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30">PyTorch</span>
-                            </div>
-                        </a>
-
-                        <a href="projects/fuel-price-analysis.html" class="glass-card rounded-lg p-6 flex flex-col transition-transform hover:-translate-y-1">
-                            <div class="w-full h-40 bg-surface-container-high rounded mb-4 overflow-hidden border border-outline-variant/20 flex items-center justify-center relative group">
-                                <span class="text-on-surface-variant opacity-50 z-10 font-label-md tracking-wider">TODO: Thumbnail</span>
-                            </div>
-                            <h4 class="font-headline-sm text-primary mb-2">UK Fuel Prices Analysis</h4>
-                            <p class="font-body-md text-on-surface-variant mb-4 flex-grow">An end-to-end data science pipeline analyzing 20+ years of UK fuel price data and building regression models to predict pump prices.</p>
-                            <div class="flex flex-wrap gap-2 mt-auto">
-                                <span class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30">Python</span>
-                                <span class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30">Pandas</span>
-                                <span class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30">scikit-learn</span>
-                            </div>
-                        </a>
-
-                        <a href="projects/duckietown-rewritten.html" class="glass-card rounded-lg p-6 flex flex-col transition-transform hover:-translate-y-1">
-                            <div class="w-full h-40 bg-surface-container-high rounded mb-4 overflow-hidden border border-outline-variant/20 flex items-center justify-center relative group">
-                                <span class="text-on-surface-variant opacity-50 z-10 font-label-md tracking-wider">TODO: Thumbnail</span>
-                            </div>
-                            <h4 class="font-headline-sm text-primary mb-2">DuckieTown Rewritten</h4>
-                            <p class="font-body-md text-on-surface-variant mb-4 flex-grow">A robotics education platform for the Duckiebot DB21J, combining computer-vision tasks, a Godot-based simulation, and a live web dashboard for real robot control.</p>
-                            <div class="flex flex-wrap gap-2 mt-auto">
-                                <span class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30">Python</span>
-                                <span class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30">Flask</span>
-                                <span class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30">Godot</span>
-                            </div>
-                        </a>
-
-                    </div>
-                </div>
-            </section>
-
-            <div class="ornate-divider"><div class="ornate-divider-icon"></div></div>
-
-            <!-- Education Section -->
-            <section id="education" class="py-section-gap px-gutter max-w-container-max mx-auto">
-                <h2 class="font-headline-lg text-primary text-center mb-16">Education & Certifications</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                    
-                    <div class="glass-card p-6 rounded-lg text-center flex flex-col items-center">
-                        <span class="material-symbols-outlined text-secondary text-4xl mb-4" style="font-variation-settings: 'FILL' 1;">school</span>
-                        <h3 class="font-headline-sm text-primary mb-2">Bachelor's in Computer Science</h3>
-                        <p class="font-body-md text-on-surface-variant opacity-80">Kutaisi International University</p>
-                        <span class="text-xs font-label-md text-secondary mt-2 border border-secondary/30 rounded px-2 py-1 bg-surface-container-highest">Ongoing</span>
-                    </div>
-
-                    <div class="glass-card p-6 rounded-lg text-center flex flex-col items-center">
-                        <span class="material-symbols-outlined text-secondary text-4xl mb-4" style="font-variation-settings: 'FILL' 1;">language</span>
-                        <h3 class="font-headline-sm text-primary mb-2">C1 English Certificate</h3>
-                        <p class="font-body-md text-on-surface-variant opacity-80">British Council</p>
-                    </div>
-
-                    <div class="glass-card p-6 rounded-lg text-center flex flex-col items-center">
-                        <span class="material-symbols-outlined text-secondary text-4xl mb-4" style="font-variation-settings: 'FILL' 1;">code</span>
-                        <h3 class="font-headline-sm text-primary mb-2">Introduction to Python</h3>
-                        <p class="font-body-md text-on-surface-variant opacity-80">TBC x USAID</p>
-                    </div>
-
-                </div>
-            </section>
-
-            <div class="ornate-divider"><div class="ornate-divider-icon"></div></div>
-            
-            <!-- Contact Section -->
-            <section id="contact" class="py-section-gap px-gutter max-w-container-max mx-auto mb-20">
-                <h2 class="font-headline-lg text-primary text-center mb-4">Contact Me</h2>
-                <p class="text-center text-on-surface-variant mb-12">Feel free to reach out to me directly at <a href="mailto:besomeskhia40k@gmail.com" class="text-secondary hover:underline">besomeskhia40k@gmail.com</a></p>
-                <div class="max-w-xl mx-auto glass-card rounded-lg p-8">
-                    
-                    <form id="contactForm" class="flex flex-col gap-6">
-                        <!-- TODO: Paste your Web3Forms Access Key here -->
-                        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY_HERE">
-                        
-                        <div>
-                            <label for="name" class="block font-label-md text-on-surface-variant mb-2">Name</label>
-                            <input type="text" id="name" name="name" required class="custom-input w-full rounded p-3 font-body-md">
-                        </div>
-                        <div>
-                            <label for="email" class="block font-label-md text-on-surface-variant mb-2">Email</label>
-                            <input type="email" id="email" name="email" required class="custom-input w-full rounded p-3 font-body-md">
-                        </div>
-                        <div>
-                            <label for="message" class="block font-label-md text-on-surface-variant mb-2">Message</label>
-                            <textarea id="message" name="message" rows="4" required class="custom-input w-full rounded p-3 font-body-md"></textarea>
-                        </div>
-                        
-                        <!-- Honeypot Spam Protection -->
-                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
-                        <button type="submit" class="btn-primary w-full py-3 rounded font-label-md mt-2">
-                            Send Message
-                        </button>
-                        
-                        <div id="formStatus" class="text-center hidden"></div>
-                    </form>
-                </div>
-            </section>
-
-        </main>
-        
-        <!-- Footer -->
-        <footer class="bg-surface-container-lowest w-full py-12 border-t border-outline-variant/20">
-            <div class="flex flex-col items-center gap-4 text-center px-margin-safe">
-                <div class="font-headline-sm text-headline-sm text-primary mb-2">
-                    BM
-                </div>
-                <div class="flex gap-6 mb-4">
-                    <a href="https://github.com/Besika40K" target="_blank" rel="noopener noreferrer" class="text-on-surface-variant hover:text-secondary transition-colors focus:ring-1 focus:ring-primary rounded px-2">GitHub</a>
-                    <!-- TODO: Replace placeholder with your real LinkedIn URL -->
-                    <a href="https://www.linkedin.com/in/besik-meskhia-743149208/" target="_blank" rel="noopener noreferrer" class="text-on-surface-variant hover:text-secondary transition-colors focus:ring-1 focus:ring-primary rounded px-2">LinkedIn</a>
-                </div>
-                <p class="font-body-md text-on-surface-variant opacity-60">
-                    &copy; 2024 Besik Meskhia. Forged in the abyss of code.
+                <h4 class="font-headline-sm text-primary mb-2">
+                  Bandersnatch (Bus #3)
+                </h4>
+                <p class="font-body-md text-on-surface-variant mb-4 flex-grow">
+                  A mobile-first web app helping KIU students get an honest,
+                  real-time status check on the campus shuttle bus.
                 </p>
+                <div class="flex flex-wrap gap-2 mt-auto">
+                  <span
+                    class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30"
+                    >Next.js</span
+                  >
+                  <span
+                    class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30"
+                    >Firebase</span
+                  >
+                </div>
+              </a>
+
+              <a
+                href="projects/kiu-website.html"
+                class="glass-card rounded-lg p-6 flex flex-col transition-transform hover:-translate-y-1"
+              >
+                <div
+                  class="w-full h-40 bg-surface-container-high rounded mb-4 overflow-hidden border border-outline-variant/20 flex items-center justify-center relative group"
+                >
+                  <img
+                    src="placeholder.jpg"
+                    alt="Project Thumbnail"
+                    class="w-full h-full object-cover opacity-60 mix-blend-overlay group-hover:opacity-80 transition-opacity"
+                  />
+                </div>
+                <h4 class="font-headline-sm text-primary mb-2">
+                  KIU Official Website
+                </h4>
+                <p class="font-body-md text-on-surface-variant mb-4 flex-grow">
+                  Contributed front-end development work on the official website
+                  for Kutaisi International University.
+                </p>
+                <div class="flex flex-wrap gap-2 mt-auto">
+                  <span
+                    class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30"
+                    >Next.js</span
+                  >
+                  <span
+                    class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30"
+                    >React</span
+                  >
+                  <span
+                    class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30"
+                    >Tailwind CSS</span
+                  >
+                </div>
+              </a>
+
+              <a
+                href="projects/gragnily.html"
+                class="glass-card rounded-lg p-6 flex flex-col transition-transform hover:-translate-y-1"
+              >
+                <div
+                  class="w-full h-40 bg-surface-container-high rounded mb-4 overflow-hidden border border-outline-variant/20 flex items-center justify-center relative group"
+                >
+                  <img
+                    src="placeholder.jpg"
+                    alt="Project Thumbnail"
+                    class="w-full h-full object-cover opacity-60 mix-blend-overlay group-hover:opacity-80 transition-opacity"
+                  />
+                </div>
+                <h4 class="font-headline-sm text-primary mb-2">Gragnily</h4>
+                <p class="font-body-md text-on-surface-variant mb-4 flex-grow">
+                  A full-stack web application designed for 12th-grade
+                  abiturients in Georgia to view books, upload essays, and read
+                  news.
+                </p>
+                <div class="flex flex-wrap gap-2 mt-auto">
+                  <span
+                    class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30"
+                    >Data Analysis</span
+                  >
+                </div>
+              </a>
             </div>
-        </footer>
-        
-        <!-- Scroll to Top Button -->
-        <button id="scrollToTopBtn" aria-label="Scroll to top" class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 translate-y-4 hover:scale-105 group" style="background-color: #1a1010; box-shadow: 0 0 10px rgba(138, 31, 31, 0.5), inset 0 0 5px rgba(233, 193, 109, 0.2); border: 1px solid #8a1f1f;">
-            <!-- Ornate SVG Frame -->
-            <svg viewBox="0 0 100 100" class="w-full h-full absolute inset-0 text-[#e9c16d] opacity-70 group-hover:opacity-100 transition-opacity">
-                <!-- Inner antique gold rings -->
-                <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 3"/>
-                <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="0.5"/>
-                <!-- Outer spikes/ornaments -->
-                <path d="M50 0 L53 6 L47 6 Z" fill="#8a1f1f"/>
-                <path d="M50 100 L53 94 L47 94 Z" fill="#8a1f1f"/>
-                <path d="M0 50 L6 47 L6 53 Z" fill="#8a1f1f"/>
-                <path d="M100 50 L94 47 L94 53 Z" fill="#8a1f1f"/>
-                <path d="M15 15 L21 17 L17 21 Z" fill="#8a1f1f"/>
-                <path d="M85 85 L79 83 L83 79 Z" fill="#8a1f1f"/>
-                <path d="M15 85 L17 79 L21 83 Z" fill="#8a1f1f"/>
-                <path d="M85 15 L83 21 L79 17 Z" fill="#8a1f1f"/>
-            </svg>
-            <span class="material-symbols-outlined relative z-10 text-primary text-3xl group-hover:drop-shadow-[0_0_8px_rgba(255,179,173,0.8)] transition-all">keyboard_arrow_up</span>
-            <!-- Hover Glow Overlay -->
-            <div class="absolute inset-0 rounded-full border border-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="box-shadow: 0 0 15px rgba(138, 31, 31, 0.8);"></div>
-        </button>
+          </div>
+
+          <!-- Machine Learning & Data Analysis -->
+          <div>
+            <h3
+              class="font-headline-md text-secondary border-b border-outline-variant/30 pb-4 mb-8"
+            >
+              Machine Learning & Data Analysis
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <a
+                href="projects/image-captioning.html"
+                class="glass-card rounded-lg p-6 flex flex-col transition-transform hover:-translate-y-1"
+              >
+                <div
+                  class="w-full h-40 bg-surface-container-high rounded mb-4 overflow-hidden border border-outline-variant/20 flex items-center justify-center relative group"
+                >
+                  <img
+                    src="placeholder.jpg"
+                    alt="Project Thumbnail"
+                    class="w-full h-full object-cover opacity-60 mix-blend-overlay group-hover:opacity-80 transition-opacity"
+                  />
+                </div>
+                <h4 class="font-headline-sm text-primary mb-2">
+                  Image Captioning
+                </h4>
+                <p class="font-body-md text-on-surface-variant mb-4 flex-grow">
+                  A neural network system that generates natural-language
+                  captions for images, using a ResNet50 encoder and LSTM
+                  decoder.
+                </p>
+                <div class="flex flex-wrap gap-2 mt-auto">
+                  <span
+                    class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30"
+                    >Python</span
+                  >
+                  <span
+                    class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30"
+                    >PyTorch</span
+                  >
+                </div>
+              </a>
+
+              <a
+                href="projects/fuel-price-analysis.html"
+                class="glass-card rounded-lg p-6 flex flex-col transition-transform hover:-translate-y-1"
+              >
+                <div
+                  class="w-full h-40 bg-surface-container-high rounded mb-4 overflow-hidden border border-outline-variant/20 flex items-center justify-center relative group"
+                >
+                  <img
+                    src="placeholder.jpg"
+                    alt="Project Thumbnail"
+                    class="w-full h-full object-cover opacity-60 mix-blend-overlay group-hover:opacity-80 transition-opacity"
+                  />
+                </div>
+                <h4 class="font-headline-sm text-primary mb-2">
+                  UK Fuel Prices Analysis
+                </h4>
+                <p class="font-body-md text-on-surface-variant mb-4 flex-grow">
+                  An end-to-end data science pipeline analyzing 20+ years of UK
+                  fuel price data and building regression models to predict pump
+                  prices.
+                </p>
+                <div class="flex flex-wrap gap-2 mt-auto">
+                  <span
+                    class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30"
+                    >Python</span
+                  >
+                  <span
+                    class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30"
+                    >Pandas</span
+                  >
+                  <span
+                    class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30"
+                    >scikit-learn</span
+                  >
+                </div>
+              </a>
+
+              <a
+                href="projects/duckietown-rewritten.html"
+                class="glass-card rounded-lg p-6 flex flex-col transition-transform hover:-translate-y-1"
+              >
+                <div
+                  class="w-full h-40 bg-surface-container-high rounded mb-4 overflow-hidden border border-outline-variant/20 flex items-center justify-center relative group"
+                >
+                  <img
+                    src="placeholder.jpg"
+                    alt="Project Thumbnail"
+                    class="w-full h-full object-cover opacity-60 mix-blend-overlay group-hover:opacity-80 transition-opacity"
+                  />
+                </div>
+                <h4 class="font-headline-sm text-primary mb-2">
+                  DuckieTown Rewritten
+                </h4>
+                <p class="font-body-md text-on-surface-variant mb-4 flex-grow">
+                  A robotics education platform for the Duckiebot DB21J,
+                  combining computer-vision tasks, a Godot-based simulation, and
+                  a live web dashboard for real robot control.
+                </p>
+                <div class="flex flex-wrap gap-2 mt-auto">
+                  <span
+                    class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30"
+                    >Python</span
+                  >
+                  <span
+                    class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30"
+                    >Flask</span
+                  >
+                  <span
+                    class="text-xs font-label-md bg-surface-container-high text-secondary px-2 py-1 rounded border border-outline-variant/30"
+                    >Godot</span
+                  >
+                </div>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <div class="ornate-divider">
+          <div class="ornate-divider-icon"></div>
+        </div>
+
+        <!-- Education Section -->
+        <section
+          id="education"
+          class="py-section-gap px-gutter max-w-container-max mx-auto"
+        >
+          <h2 class="font-headline-lg text-primary text-center mb-16">
+            Education & Certifications
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <div
+              class="glass-card p-6 rounded-lg text-center flex flex-col items-center"
+            >
+              <span
+                class="material-symbols-outlined text-secondary text-4xl mb-4"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >school</span
+              >
+              <h3 class="font-headline-sm text-primary mb-2">
+                Bachelor's in Computer Science
+              </h3>
+              <p class="font-body-md text-on-surface-variant opacity-80">
+                Kutaisi International University
+              </p>
+              <span
+                class="text-xs font-label-md text-secondary mt-2 border border-secondary/30 rounded px-2 py-1 bg-surface-container-highest"
+                >Ongoing</span
+              >
+            </div>
+
+            <div
+              class="glass-card p-6 rounded-lg text-center flex flex-col items-center"
+            >
+              <span
+                class="material-symbols-outlined text-secondary text-4xl mb-4"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >language</span
+              >
+              <h3 class="font-headline-sm text-primary mb-2">
+                C1 English Certificate
+              </h3>
+              <p class="font-body-md text-on-surface-variant opacity-80">
+                British Council
+              </p>
+            </div>
+
+            <div
+              class="glass-card p-6 rounded-lg text-center flex flex-col items-center"
+            >
+              <span
+                class="material-symbols-outlined text-secondary text-4xl mb-4"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >code</span
+              >
+              <h3 class="font-headline-sm text-primary mb-2">
+                Introduction to Python
+              </h3>
+              <p class="font-body-md text-on-surface-variant opacity-80">
+                TBC x USAID
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <div class="ornate-divider">
+          <div class="ornate-divider-icon"></div>
+        </div>
+
+        <!-- Contact Section -->
+        <section
+          id="contact"
+          class="py-section-gap px-gutter max-w-container-max mx-auto mb-20"
+        >
+          <h2 class="font-headline-lg text-primary text-center mb-4">
+            Contact Me
+          </h2>
+          <p class="text-center text-on-surface-variant mb-12">
+            Feel free to reach out to me directly at
+            <a
+              href="mailto:besomeskhia40k@gmail.com"
+              class="text-secondary hover:underline"
+              >besomeskhia40k@gmail.com</a
+            >
+          </p>
+          <div class="max-w-xl mx-auto glass-card rounded-lg p-8">
+            <form id="contactForm" class="flex flex-col gap-6">
+              <input
+                type="hidden"
+                name="access_key"
+                value="d51f49d6-eb93-4dab-82ab-9da32242e1ac"
+              />
+
+              <div>
+                <label
+                  for="name"
+                  class="block font-label-md text-on-surface-variant mb-2"
+                  >Name</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  class="custom-input w-full rounded p-3 font-body-md"
+                />
+              </div>
+              <div>
+                <label
+                  for="email"
+                  class="block font-label-md text-on-surface-variant mb-2"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="custom-input w-full rounded p-3 font-body-md"
+                />
+              </div>
+              <div>
+                <label
+                  for="message"
+                  class="block font-label-md text-on-surface-variant mb-2"
+                  >Message</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  required
+                  class="custom-input w-full rounded p-3 font-body-md"
+                ></textarea>
+              </div>
+
+              <!-- Honeypot Spam Protection -->
+              <input
+                type="checkbox"
+                name="botcheck"
+                class="hidden"
+                style="display: none"
+              />
+
+              <button
+                type="submit"
+                class="btn-primary w-full py-3 rounded font-label-md mt-2"
+              >
+                Send Message
+              </button>
+
+              <div id="formStatus" class="text-center hidden"></div>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer
+        class="bg-surface-container-lowest w-full py-12 border-t border-outline-variant/20"
+      >
+        <div
+          class="flex flex-col items-center gap-4 text-center px-margin-safe"
+        >
+          <div class="font-headline-sm text-headline-sm text-primary mb-2">
+            BM
+          </div>
+          <div class="flex gap-6 mb-4">
+            <a
+              href="https://github.com/Besika40K"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-on-surface-variant hover:text-secondary transition-colors focus:ring-1 focus:ring-primary rounded px-2"
+              >GitHub</a
+            >
+            <!-- TODO: Replace placeholder with your real LinkedIn URL -->
+            <a
+              href="https://www.linkedin.com/in/besik-meskhia-743149208/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-on-surface-variant hover:text-secondary transition-colors focus:ring-1 focus:ring-primary rounded px-2"
+              >LinkedIn</a
+            >
+          </div>
+          <p class="font-body-md text-on-surface-variant opacity-60">
+            &copy; 2024 Besik Meskhia. Forged in the abyss of code.
+          </p>
+        </div>
+      </footer>
+
+      <!-- Scroll to Top Button -->
+      <button
+        id="scrollToTopBtn"
+        aria-label="Scroll to top"
+        class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 translate-y-4 hover:scale-105 group"
+        style="
+          background-color: #1a1010;
+          box-shadow:
+            0 0 10px rgba(138, 31, 31, 0.5),
+            inset 0 0 5px rgba(233, 193, 109, 0.2);
+          border: 1px solid #8a1f1f;
+        "
+      >
+        <!-- Ornate SVG Frame -->
+        <svg
+          viewBox="0 0 100 100"
+          class="w-full h-full absolute inset-0 text-[#e9c16d] opacity-70 group-hover:opacity-100 transition-opacity"
+        >
+          <!-- Inner antique gold rings -->
+          <circle
+            cx="50"
+            cy="50"
+            r="44"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-dasharray="2 3"
+          />
+          <circle
+            cx="50"
+            cy="50"
+            r="40"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="0.5"
+          />
+          <!-- Outer spikes/ornaments -->
+          <path d="M50 0 L53 6 L47 6 Z" fill="#8a1f1f" />
+          <path d="M50 100 L53 94 L47 94 Z" fill="#8a1f1f" />
+          <path d="M0 50 L6 47 L6 53 Z" fill="#8a1f1f" />
+          <path d="M100 50 L94 47 L94 53 Z" fill="#8a1f1f" />
+          <path d="M15 15 L21 17 L17 21 Z" fill="#8a1f1f" />
+          <path d="M85 85 L79 83 L83 79 Z" fill="#8a1f1f" />
+          <path d="M15 85 L17 79 L21 83 Z" fill="#8a1f1f" />
+          <path d="M85 15 L83 21 L79 17 Z" fill="#8a1f1f" />
+        </svg>
+        <span
+          class="material-symbols-outlined relative z-10 text-primary text-3xl group-hover:drop-shadow-[0_0_8px_rgba(255,179,173,0.8)] transition-all"
+          >keyboard_arrow_up</span
+        >
+        <!-- Hover Glow Overlay -->
+        <div
+          class="absolute inset-0 rounded-full border border-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          style="box-shadow: 0 0 15px rgba(138, 31, 31, 0.8)"
+        ></div>
+      </button>
     </div>
 
     <script src="js/script.js"></script>
-</body>
+  </body>
 </html>
