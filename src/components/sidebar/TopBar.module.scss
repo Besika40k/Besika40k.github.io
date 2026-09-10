@@ -1,0 +1,22 @@
+.bar {
+  @include card;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 8px 8px 14px;
+}
+
+.mark {
+  width: 30px;
+  color: var(--abyss);
+}
+
+.views {
+  display: flex;
+  gap: 6px;
+}
+
+.view {
+  @include pill;
+}

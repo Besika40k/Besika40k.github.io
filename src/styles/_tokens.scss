@@ -1,0 +1,98 @@
+// Compile-time tokens. Injected into every SCSS file, so keep this free of CSS output.
+// Colours live as CSS custom properties in global.scss.
+
+$font-display: 'Grenze Variable', 'Noto Serif Georgian Variable', Georgia, serif;
+$font-body: 'Schibsted Grotesk Variable', 'Noto Sans Georgian Variable', system-ui, sans-serif;
+$font-runic: 'Noto Sans Runic', serif;
+
+// Type scale (classic ratios: 12 · 14 · 16 · 18 · 21 · 24 · 36 · 48)
+$text-xs: 0.75rem;
+$text-sm: 0.875rem;
+$text-md: 1rem;
+$text-lg: 1.125rem;
+$text-xl: 1.3125rem;
+$text-2xl: 1.5rem;
+$text-3xl: 2.25rem;
+$text-4xl: 3rem;
+
+$gap: 10px;
+$radius-lg: 22px;
+$radius-md: 14px;
+$radius-sm: 9px;
+$radius-pill: 999px;
+
+$bp-wide: 1000px;
+$bp-narrow: 560px;
+
+@mixin wide {
+  @media (min-width: $bp-wide) {
+    @content;
+  }
+}
+
+@mixin narrow {
+  @media (max-width: $bp-narrow) {
+    @content;
+  }
+}
+
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid var(--ember);
+    outline-offset: 2px;
+  }
+}
+
+@mixin reset-button {
+  appearance: none;
+  border: 0;
+  background: none;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+@mixin card {
+  background: var(--surface);
+  border-radius: $radius-lg;
+}
+
+// Small rounded toggle used for Info/Contact, EN/KA, section and category filters.
+@mixin pill {
+  @include reset-button;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 0 14px;
+  border-radius: $radius-pill;
+  font-size: $text-sm;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--ink-muted);
+  background: var(--surface-sunken);
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+  @include focus-ring;
+
+  &:hover {
+    color: var(--ink);
+  }
+
+  &[aria-pressed='true'],
+  &[aria-current='true'] {
+    background: var(--ember);
+    color: var(--abyss);
+  }
+}
+
+// Recolourable artwork: the SVG becomes a mask over currentColor.
+@mixin mask-art($url, $size: contain, $repeat: no-repeat) {
+  background-color: currentColor;
+  mask-image: $url;
+  mask-size: $size;
+  mask-repeat: $repeat;
+  mask-position: center;
+}

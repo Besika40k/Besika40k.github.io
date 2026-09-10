@@ -1,0 +1,42 @@
+$icon-gap: 30px;
+
+.card {
+  @include card;
+  overflow: hidden;
+  padding: 16px 0;
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+
+  @media (min-width: $bp-wide) and (max-height: 860px) {
+    padding: 12px 0;
+  }
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: marquee 48s linear infinite;
+
+  .card:hover & {
+    animation-play-state: paused;
+  }
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  gap: $icon-gap;
+  padding-right: $icon-gap;
+  list-style: none;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  color: var(--slate);
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}

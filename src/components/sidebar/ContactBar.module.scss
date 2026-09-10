@@ -1,0 +1,54 @@
+.bar {
+  @include card;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px;
+}
+
+.email {
+  @include pill;
+  min-width: 0;
+  border: 1px solid var(--ember);
+  background: transparent;
+  color: var(--ink);
+
+  &:hover {
+    background: var(--surface-sunken);
+  }
+}
+
+.address {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.links {
+  display: flex;
+  gap: 6px;
+
+  a {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: $radius-pill;
+    border: 1px solid var(--line);
+    color: var(--slate);
+    transition:
+      color 0.15s ease,
+      border-color 0.15s ease;
+    @include focus-ring;
+
+    &:hover {
+      color: var(--ink);
+      border-color: var(--slate);
+    }
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}

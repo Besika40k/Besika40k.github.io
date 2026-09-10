@@ -1,0 +1,26 @@
+.section {
+  display: grid;
+  gap: 24px;
+  scroll-margin-top: 72px;
+
+  @include wide {
+    scroll-margin-top: 28px;
+  }
+}
+
+.title {
+  font-family: $font-display;
+  font-weight: 600;
+  font-size: $text-4xl;
+  line-height: 1;
+  letter-spacing: -0.01em;
+
+  :lang(ka) & {
+    font-size: $text-3xl;
+    line-height: 1.2;
+  }
+
+  @include narrow {
+    font-size: $text-3xl;
+  }
+}

@@ -1,0 +1,97 @@
+:root {
+  // Palette carried over from the rsschool-cv site
+  --slate: #3b4e51;
+  --sage: #8aa3a6;
+  --ice: #e9f1f2;
+  --abyss: #1c261a;
+  --ember: #e67e22;
+  --rose: #b8938f;
+
+  // Roles
+  --frame: var(--slate);
+  --surface: var(--ice);
+  --surface-raised: #f7fbfb;
+  --surface-sunken: #dae6e7;
+  --ink: var(--abyss);
+  --ink-muted: #46595c;
+  --line: #c4d4d6;
+  --link: #9a480b; // ember darkened to pass AA on ice
+
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background-color: var(--frame);
+  color: var(--ink);
+  font-family: $font-body;
+  font-size: $text-md;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+dl,
+dd,
+figure {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

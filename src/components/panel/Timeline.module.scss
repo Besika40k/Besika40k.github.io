@@ -1,0 +1,62 @@
+// Shared by Experience and Education: dates on the left, details on the right.
+.timeline {
+  list-style: none;
+  display: grid;
+}
+
+.entry {
+  display: grid;
+  grid-template-columns: 11rem 1fr;
+  gap: 8px 24px;
+  padding: 22px 0;
+  border-top: 1px solid var(--line);
+
+  &:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  @include narrow {
+    grid-template-columns: 1fr;
+  }
+}
+
+.when {
+  font-size: $text-sm;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-muted);
+  padding-top: 0.3em;
+}
+
+.what {
+  display: grid;
+  gap: 4px;
+  max-width: 68ch;
+}
+
+.heading {
+  font-family: $font-display;
+  font-weight: 600;
+  font-size: $text-2xl;
+  line-height: 1.15;
+
+  :lang(ka) & {
+    font-size: $text-xl;
+    line-height: 1.35;
+  }
+}
+
+.where {
+  color: var(--ink-muted);
+}
+
+.points {
+  margin-top: 10px;
+  display: grid;
+  gap: 6px;
+  padding-left: 1.1em;
+
+  li::marker {
+    color: var(--ember);
+  }
+}

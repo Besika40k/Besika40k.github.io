@@ -1,0 +1,60 @@
+.groups {
+  display: grid;
+}
+
+.group {
+  display: grid;
+  grid-template-columns: 11rem 1fr;
+  gap: 8px 24px;
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+
+  &:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  @include narrow {
+    grid-template-columns: 1fr;
+  }
+}
+
+.label {
+  font-size: $text-sm;
+  color: var(--ink-muted);
+  padding-top: 6px;
+}
+
+.chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  li {
+    padding: 5px 12px;
+    border-radius: $radius-pill;
+    background: var(--surface-raised);
+    border: 1px solid var(--line);
+    font-size: $text-sm;
+  }
+}
+
+.spoken {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  padding-top: 4px;
+
+  li {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+  }
+}
+
+.level {
+  font-size: $text-sm;
+  color: var(--ink-muted);
+}

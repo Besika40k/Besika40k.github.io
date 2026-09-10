@@ -1,0 +1,170 @@
+.card {
+  display: grid;
+  gap: 12px;
+  padding: 18px;
+  border-radius: $radius-md;
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  scroll-margin-top: 72px;
+  transition: border-color 0.2s ease;
+
+  @include wide {
+    scroll-margin-top: 28px;
+  }
+
+  &[data-open] {
+    border-color: var(--slate);
+  }
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: $radius-sm;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: $radius-sm;
+  background: var(--slate);
+  color: var(--ice);
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.title {
+  font-family: $font-display;
+  font-weight: 600;
+  font-size: $text-2xl;
+  line-height: 1.1;
+}
+
+.year {
+  margin-left: auto;
+  font-size: $text-sm;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-muted);
+}
+
+.summary {
+  text-wrap: pretty;
+}
+
+.stack {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+
+  li {
+    padding: 2px 9px;
+    border-radius: $radius-pill;
+    background: var(--surface-sunken);
+    font-size: $text-xs;
+    color: var(--ink-muted);
+  }
+}
+
+.detailsWrap {
+  overflow: hidden;
+}
+
+.details {
+  display: grid;
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-size: $text-sm;
+  line-height: 1.55;
+
+  h4 {
+    margin: 0 0 2px;
+    font-size: $text-sm;
+    font-weight: 600;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.1em;
+  }
+
+  li::marker {
+    color: var(--ember);
+  }
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-top: 4px;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  font-size: $text-sm;
+  font-weight: 500;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    color: var(--link);
+    text-decoration: none;
+    @include focus-ring;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  }
+}
+
+.closed {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--ink-muted);
+  font-weight: 400;
+}
+
+.toggle {
+  @include reset-button;
+  @include focus-ring;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 32px;
+  font-size: $text-sm;
+  color: var(--ink-muted);
+
+  &:hover {
+    color: var(--ink);
+  }
+
+  svg {
+    transition: rotate 0.2s ease;
+  }
+
+  &[aria-expanded='true'] svg {
+    rotate: 180deg;
+  }
+}

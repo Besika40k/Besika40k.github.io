@@ -1,0 +1,206 @@
+.card {
+  @include card;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 16px 18px 22px;
+
+  // Shorter laptop screens: tighten so the whole column fits without scrolling.
+  @media (min-width: $bp-wide) and (max-height: 860px) {
+    gap: 12px;
+    padding-bottom: 16px;
+
+    .avatar {
+      width: 72px;
+    }
+
+    .name {
+      font-size: $text-3xl * 0.85;
+    }
+
+    .bio {
+      font-size: $text-md;
+    }
+
+    .body {
+      min-height: 6em;
+    }
+  }
+}
+
+.head {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: start;
+  gap: 14px;
+}
+
+.avatar {
+  width: 92px;
+  aspect-ratio: 1;
+  border-radius: $radius-md;
+  background: var(--slate);
+  display: grid;
+  place-items: center;
+}
+
+.avatarArt {
+  width: 74%;
+  color: var(--ice);
+}
+
+.lang {
+  display: flex;
+  gap: 8px;
+  font-size: $text-sm;
+
+  button {
+    @include reset-button;
+    @include focus-ring;
+    color: var(--ink-muted);
+    padding: 1px 0;
+    border-bottom: 1px solid transparent;
+
+    &[aria-pressed='true'] {
+      color: var(--ink);
+      border-bottom-color: currentColor;
+    }
+
+    &:hover {
+      color: var(--ink);
+    }
+  }
+}
+
+.clock {
+  font-size: $text-sm;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.identity {
+  display: grid;
+  gap: 4px;
+}
+
+.name {
+  font-family: $font-display;
+  font-weight: 600;
+  font-size: $text-3xl;
+  line-height: 1.05;
+  letter-spacing: -0.005em;
+
+  :lang(ka) & {
+    font-size: $text-2xl;
+    line-height: 1.25;
+  }
+}
+
+.handle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 10px;
+  font-size: $text-sm;
+  color: var(--ink-muted);
+}
+
+.runes {
+  font-family: $font-runic;
+  letter-spacing: 0.08em;
+  color: var(--slate);
+}
+
+.location {
+  flex-basis: 100%;
+}
+
+.body {
+  min-height: 7.5em;
+}
+
+.bio {
+  font-size: $text-lg;
+  line-height: 1.5;
+  max-width: 38ch;
+  text-wrap: pretty;
+
+  :lang(ka) & {
+    font-size: $text-md;
+    line-height: 1.6;
+  }
+}
+
+.contact {
+  display: grid;
+  gap: 14px;
+}
+
+.contactLead {
+  font-size: $text-md;
+  color: var(--ink-muted);
+  max-width: 38ch;
+}
+
+.links {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+  font-size: $text-md;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 32px;
+  }
+
+  a {
+    color: var(--ink);
+    text-decoration-color: var(--sage);
+    text-underline-offset: 3px;
+    overflow-wrap: anywhere;
+    @include focus-ring;
+
+    &:hover {
+      color: var(--link);
+      text-decoration-color: currentColor;
+    }
+  }
+}
+
+.linkIcon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--slate);
+}
+
+.iconButton {
+  @include reset-button;
+  @include focus-ring;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-pill;
+  color: var(--ink-muted);
+  background: var(--surface-sunken);
+
+  &:hover {
+    color: var(--ink);
+  }
+}
+
+.cv {
+  @include pill;
+  justify-self: start;
+  background: var(--abyss);
+  color: var(--ice);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--ice);
+    background: var(--slate);
+  }
+}

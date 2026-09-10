@@ -1,0 +1,87 @@
+.panel {
+  @include card;
+  position: relative;
+  isolation: isolate;
+
+  @include wide {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    min-height: 0;
+    // clip, not hidden: a hidden box is still a scroll container and
+    // scrollIntoView would shift the whole panel under the nav.
+    overflow: clip;
+  }
+}
+
+// Large faint serpent behind the content, a nod to the rsschool-cv background.
+.watermark {
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  right: -14%;
+  width: min(88%, 110vh);
+  translate: 0 -50%;
+  color: var(--sage);
+  opacity: 0.16;
+  pointer-events: none;
+
+  @media (max-width: #{$bp-wide - 1px}) {
+    top: 120px;
+    right: -35%;
+    width: 120%;
+    translate: none;
+  }
+}
+
+.nav {
+  display: flex;
+  gap: 6px;
+  padding: 10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-radius: $radius-lg $radius-lg 0 0;
+
+  @media (max-width: #{$bp-wide - 1px}) {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+}
+
+.navLink {
+  @include pill;
+  text-decoration: none;
+}
+
+.scroller {
+  @include wide {
+    overflow-y: auto;
+    min-height: 0;
+    scroll-padding-top: 24px;
+  }
+}
+
+.content {
+  display: grid;
+  gap: 72px;
+  padding: 36px clamp(20px, 4vw, 56px) 40px;
+
+  @include narrow {
+    gap: 56px;
+    padding: 28px 18px 32px;
+  }
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-size: $text-sm;
+  color: var(--ink-muted);
+}
