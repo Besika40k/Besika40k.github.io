@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { Check, Copy, FileDown } from 'lucide-react';
 import { profile } from '@/data/profile';
 import { useI18n } from '@/i18n/context';
@@ -20,13 +20,14 @@ const fade = {
 export function ProfileCard({ view }: { view: SidebarView }) {
   const { t, l, locale, setLocale } = useI18n();
   const now = useNow();
+  const reduceMotion = useReducedMotion();
 
   return (
     <section className={s.card} aria-labelledby="profile-name">
       <div className={s.head}>
         <motion.div
           className={s.avatar}
-          initial={{ rotate: -140, opacity: 0 }}
+          initial={reduceMotion ? false : { rotate: -140, opacity: 0 }}
           animate={{ rotate: 0, opacity: 1 }}
           transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
         >
