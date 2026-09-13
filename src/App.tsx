@@ -26,7 +26,9 @@ export default function App() {
   };
 
   return (
-    <MotionConfig reducedMotion="user">
+    // Interface animations play even when the OS asks for reduced motion (owner's choice,
+    // matching jkane.co). Only the automatic avatar spin and smooth scrolling honour it.
+    <MotionConfig reducedMotion="never">
       <div className={s.app}>
         <aside className={s.sidebar}>
           <TopBar view={view} onViewChange={setView} />
