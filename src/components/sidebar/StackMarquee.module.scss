@@ -11,12 +11,13 @@ $icon-gap: 30px;
   }
 }
 
+// Scrolls right to left at roughly 27px/s; stops while a logo is hovered.
 .track {
   display: flex;
   width: max-content;
-  animation: marquee 48s linear infinite;
+  animation: marquee 36s linear infinite;
 
-  .card:hover & {
+  &:has(.item:hover) {
     animation-play-state: paused;
   }
 }
@@ -29,10 +30,26 @@ $icon-gap: 30px;
   list-style: none;
 }
 
+.item {
+  display: grid;
+  place-items: center;
+  // Larger hit area than the 24px glyph so the strip is easy to stop.
+  padding: 6px;
+  margin: -6px;
+  color: var(--slate);
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    color: var(--brand);
+    transform: scale(1.18);
+  }
+}
+
 .icon {
   width: 24px;
   height: 24px;
-  color: var(--slate);
 }
 
 @keyframes marquee {
