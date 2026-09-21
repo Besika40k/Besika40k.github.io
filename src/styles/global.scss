@@ -29,6 +29,13 @@
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+
+  // Page scrollbar (narrow layouts) sits on the slate frame, so invert the colours.
+  @include themed-scrollbar(
+    var(--sage),
+    var(--ice),
+    color-mix(in srgb, var(--ice) 25%, transparent)
+  );
 }
 
 body {

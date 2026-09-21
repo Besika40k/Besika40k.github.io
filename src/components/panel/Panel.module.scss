@@ -61,6 +61,7 @@
     overflow-y: auto;
     min-height: 0;
     scroll-padding-top: 24px;
+    @include themed-scrollbar;
   }
 }
 
