@@ -9,7 +9,7 @@ const pinned = projects.filter((project) => project.pinned);
 export function PinnedProjects({ onOpen }: { onOpen: (id: string) => void }) {
   const { t, l } = useI18n();
   return (
-    <section className={s.card} aria-labelledby="pinned-title">
+    <section className={s.card} aria-labelledby="pinned-title" data-grow>
       <h2 id="pinned-title" className={s.title}>
         <Pin size={14} aria-hidden="true" />
         {t('pinned')}
