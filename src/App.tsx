@@ -6,6 +6,7 @@ import { scrollToId } from '@/hooks/useMediaQuery';
 import { ContactBar } from '@/components/sidebar/ContactBar';
 import { PinnedProjects } from '@/components/sidebar/PinnedProjects';
 import { ProfileCard } from '@/components/sidebar/ProfileCard';
+import { SerpentRunner } from '@/components/sidebar/SerpentRunner';
 import { StackMarquee } from '@/components/sidebar/StackMarquee';
 import { TopBar, type SidebarView } from '@/components/sidebar/TopBar';
 import { Panel } from '@/components/panel/Panel';
@@ -33,8 +34,14 @@ export default function App() {
         <aside className={s.sidebar}>
           <TopBar view={view} onViewChange={setView} />
           <ProfileCard view={view} />
-          <StackMarquee />
-          <PinnedProjects onOpen={focusProject} />
+          {view === 'info' ? (
+            <>
+              <StackMarquee />
+              <PinnedProjects onOpen={focusProject} />
+            </>
+          ) : (
+            <SerpentRunner />
+          )}
           <ContactBar />
         </aside>
         <Panel

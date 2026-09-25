@@ -40,11 +40,10 @@
       flex-shrink: 0;
     }
 
-    // The pinned list absorbs leftover height and scrolls on its own;
-    // on short screens the whole column scrolls instead.
-    > :nth-child(4) {
+    // One card per view (pinned list, mini-game) absorbs the leftover height;
+    // its own stylesheet sets the minimum, below which the column scrolls instead.
+    > [data-grow] {
       flex: 1 1 0;
-      min-height: 140px;
     }
   }
 }

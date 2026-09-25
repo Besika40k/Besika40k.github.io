@@ -33,6 +33,10 @@ All text lives in typed data files. Every user-facing string has an `en` and a `
 - **Logos**: tech logos come from [simple-icons](https://simpleicons.org). To use a new one, add it to `src/lib/brandIcons.ts`.
 - **CV**: replace `public/CV.pdf`.
 
+## Mini-game
+
+The Contact view swaps the logo strip and pinned projects for a small endless runner: the serpent jumps runestones (Space, ↑ or tap). It lives in `src/game/serpentRunner.ts`; speed, gravity and when ravens appear are constants at the top of that file. The best score is kept in the visitor's browser.
+
 ## Deploying
 
 Every push to `main` builds the site and publishes it through GitHub Actions (`.github/workflows/deploy.yml`).
