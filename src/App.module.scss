@@ -30,20 +30,27 @@
   display: flex;
   flex-direction: column;
   gap: $gap;
+  overflow-x: clip; // cards slide fully out of the column when views switch
 
   @include wide {
     min-height: 0;
     overflow-y: auto;
     scrollbar-width: none;
 
-    > * {
+    > *,
+    .views > * {
       flex-shrink: 0;
     }
 
     // One card per view (pinned list, mini-game) absorbs the leftover height;
     // its own stylesheet sets the minimum, below which the column scrolls instead.
-    > [data-grow] {
+    .views > [data-grow] {
       flex: 1 1 0;
     }
   }
+}
+
+// The current view's cards are laid out as direct items of the sidebar column.
+.views {
+  display: contents;
 }

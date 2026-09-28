@@ -1,3 +1,5 @@
+$toggle-ease: cubic-bezier(0.34, 0, 0.36, 1);
+
 .bar {
   @include card;
   display: flex;
@@ -19,4 +21,67 @@
 
 .view {
   @include pill;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  gap: 8px;
+  padding: 0 7px 0 14px;
+
+  // The sliding highlight provides the ember fill, not the button itself.
+  &[aria-pressed='true'] {
+    background: var(--surface-sunken);
+    color: var(--abyss);
+  }
+}
+
+.highlight {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--ember);
+}
+
+// The real label (hidden) reserves the width so rune swaps don't jolt the layout.
+.label {
+  display: inline-grid;
+
+  > * {
+    grid-area: 1 / 1;
+  }
+}
+
+.sizer {
+  visibility: hidden;
+}
+
+.icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  transition: transform 0.5s $toggle-ease;
+
+  > span {
+    position: absolute;
+    width: 10px;
+    height: 1px;
+    background: currentColor;
+  }
+
+  > span:last-child {
+    transform: rotate(90deg);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .view[aria-pressed='true'] & {
+    transform: rotate(180deg);
+
+    > span:last-child {
+      transform: rotate(0deg);
+    }
+  }
 }

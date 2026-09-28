@@ -2,7 +2,9 @@
 // Colours live as CSS custom properties in global.scss.
 
 $font-display: 'Grenze Variable', 'Noto Serif Georgian Variable', Georgia, serif;
-$font-body: 'Schibsted Grotesk Variable', 'Noto Sans Georgian Variable', system-ui, sans-serif;
+$font-body:
+  'Schibsted Grotesk Variable', 'Noto Sans Georgian Variable', 'Noto Sans Runic', system-ui,
+  sans-serif;
 $font-runic: 'Noto Sans Runic', serif;
 
 // Type scale (classic ratios: 12 · 14 · 16 · 18 · 21 · 24 · 36 · 48)
