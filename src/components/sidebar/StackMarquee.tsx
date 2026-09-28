@@ -1,14 +1,15 @@
 import type { CSSProperties } from 'react';
+import { motion, type Variants } from 'motion/react';
 import { stackIcons } from '@/data/skills';
 import { useI18n } from '@/i18n/context';
 import { brandIcons } from '@/lib/brandIcons';
 import { BrandIcon } from '../BrandIcon';
 import s from './StackMarquee.module.scss';
 
-export function StackMarquee() {
+export function StackMarquee({ variants }: { variants?: Variants }) {
   const { t } = useI18n();
   return (
-    <section className={s.card} aria-label={t('stack')}>
+    <motion.section className={s.card} aria-label={t('stack')} variants={variants}>
       <div className={s.track}>
         {/* The list is rendered twice so the loop has no seam. */}
         {[false, true].map((copy) => (
@@ -30,6 +31,6 @@ export function StackMarquee() {
           </ul>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 }

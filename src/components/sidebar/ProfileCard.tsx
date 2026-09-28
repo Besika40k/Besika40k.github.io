@@ -1,4 +1,5 @@
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import { useEffect, useState } from 'react';
+import { motion, useReducedMotion, type Variants } from 'motion/react';
 import { Check, Copy, FileDown } from 'lucide-react';
 import { profile } from '@/data/profile';
 import { useI18n } from '@/i18n/context';
@@ -10,24 +11,29 @@ import { Serpent } from '../Serpent';
 import type { SidebarView } from './TopBar';
 import s from './ProfileCard.module.scss';
 
-const fade = {
-  initial: { opacity: 0, y: 6 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -6 },
-  transition: { duration: 0.18 },
-};
+// The avatar's entrance spin plays once per page load, not on every view switch.
+let introPlayed = false;
 
-export function ProfileCard({ view }: { view: SidebarView }) {
+interface ProfileCardProps {
+  view: SidebarView;
+  variants?: Variants;
+}
+
+export function ProfileCard({ view, variants }: ProfileCardProps) {
   const { t, l, locale, setLocale } = useI18n();
   const now = useNow();
   const reduceMotion = useReducedMotion();
+  const [playIntro] = useState(() => !introPlayed && !reduceMotion);
+  useEffect(() => {
+    introPlayed = true;
+  }, []);
 
   return (
-    <section className={s.card} aria-labelledby="profile-name">
+    <motion.section className={s.card} aria-labelledby="profile-name" variants={variants}>
       <div className={s.head}>
         <motion.div
           className={s.avatar}
-          initial={reduceMotion ? false : { rotate: -140, opacity: 0 }}
+          initial={playIntro ? { rotate: -140, opacity: 0 } : false}
           animate={{ rotate: 0, opacity: 1 }}
           transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
         >
@@ -68,19 +74,9 @@ export function ProfileCard({ view }: { view: SidebarView }) {
       </div>
 
       <div className={s.body}>
-        <AnimatePresence mode="wait" initial={false}>
-          {view === 'info' ? (
-            <motion.p key="info" className={s.bio} {...fade}>
-              {l(profile.bio)}
-            </motion.p>
-          ) : (
-            <motion.div key="contact" {...fade}>
-              <ContactDetails />
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {view === 'info' ? <p className={s.bio}>{l(profile.bio)}</p> : <ContactDetails />}
       </div>
-    </section>
+    </motion.section>
   );
 }
 

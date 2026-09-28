@@ -1,4 +1,5 @@
 import { Pin } from 'lucide-react';
+import { motion, type Variants } from 'motion/react';
 import { projects } from '@/data/projects';
 import { useI18n } from '@/i18n/context';
 import { BrandIcon } from '../BrandIcon';
@@ -6,10 +7,15 @@ import s from './PinnedProjects.module.scss';
 
 const pinned = projects.filter((project) => project.pinned);
 
-export function PinnedProjects({ onOpen }: { onOpen: (id: string) => void }) {
+interface PinnedProjectsProps {
+  onOpen: (id: string) => void;
+  variants?: Variants;
+}
+
+export function PinnedProjects({ onOpen, variants }: PinnedProjectsProps) {
   const { t, l } = useI18n();
   return (
-    <section className={s.card} aria-labelledby="pinned-title" data-grow>
+    <motion.section className={s.card} aria-labelledby="pinned-title" variants={variants} data-grow>
       <h2 id="pinned-title" className={s.title}>
         <Pin size={14} aria-hidden="true" />
         {t('pinned')}
@@ -29,6 +35,6 @@ export function PinnedProjects({ onOpen }: { onOpen: (id: string) => void }) {
           </li>
         ))}
       </ul>
-    </section>
+    </motion.section>
   );
 }

@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { motion, type Variants } from 'motion/react';
 import { createSerpentRunner } from '@/game/serpentRunner';
 import { useI18n } from '@/i18n/context';
 import s from './SerpentRunner.module.scss';
@@ -6,7 +7,7 @@ import s from './SerpentRunner.module.scss';
 type Runner = ReturnType<typeof createSerpentRunner>;
 
 /** Contact view mini-game: jump the serpent over runestones. */
-export function SerpentRunner() {
+export function SerpentRunner({ variants }: { variants?: Variants }) {
   const { t } = useI18n();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const runnerRef = useRef<Runner | null>(null);
@@ -33,10 +34,10 @@ export function SerpentRunner() {
   }, [start, over, retry, best]);
 
   return (
-    <section className={s.card} aria-label={t('gameLabel')} data-grow>
+    <motion.section className={s.card} aria-label={t('gameLabel')} variants={variants} data-grow>
       <div className={s.stage}>
         <canvas ref={canvasRef} className={s.canvas} tabIndex={0} aria-label={t('gameHelp')} />
       </div>
-    </section>
+    </motion.section>
   );
 }

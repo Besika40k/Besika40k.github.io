@@ -1,16 +1,17 @@
 import { Check, Copy, FileDown } from 'lucide-react';
+import { motion, type Variants } from 'motion/react';
 import { profile } from '@/data/profile';
 import { useI18n } from '@/i18n/context';
 import { useCopy } from '@/hooks/useCopy';
 import { BrandIcon, LinkedInIcon } from '../BrandIcon';
 import s from './ContactBar.module.scss';
 
-export function ContactBar() {
+export function ContactBar({ variants }: { variants?: Variants }) {
   const { t } = useI18n();
   const { copied, copy } = useCopy();
 
   return (
-    <div className={s.bar}>
+    <motion.div className={s.bar} variants={variants}>
       <button
         type="button"
         className={s.email}
@@ -35,6 +36,6 @@ export function ContactBar() {
           <FileDown className={s.icon} aria-hidden="true" />
         </a>
       </div>
-    </div>
+    </motion.div>
   );
 }
