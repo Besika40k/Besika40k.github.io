@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion, useReducedMotion, type Variants } from 'motion/react';
 import { Check, Copy, FileDown } from 'lucide-react';
+import avatarPhoto from '@/assets/avatar.webp';
 import { profile } from '@/data/profile';
 import { useI18n } from '@/i18n/context';
 import { useNow } from '@/hooks/useNow';
@@ -37,6 +38,14 @@ export function ProfileCard({ view, variants }: ProfileCardProps) {
           animate={{ rotate: 0, opacity: 1 }}
           transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
         >
+          {/* Hovering opens the photo out of the ring's centre. */}
+          <img
+            className={s.photo}
+            src={avatarPhoto}
+            alt={l(profile.name)}
+            width={480}
+            height={480}
+          />
           <Serpent glowingEye className={s.avatarArt} />
         </motion.div>
 
