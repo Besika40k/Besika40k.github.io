@@ -99,6 +99,13 @@ $reveal-ease: cubic-bezier(0.65, 0, 0.35, 1);
   }
 }
 
+// Sits after EN/KA; the lang group's button styles apply, this only centres the icon.
+.theme {
+  display: grid;
+  place-items: center;
+  margin-left: 4px;
+}
+
 .clock {
   font-size: $text-sm;
   font-variant-numeric: tabular-nums;
@@ -135,7 +142,7 @@ $reveal-ease: cubic-bezier(0.65, 0, 0.35, 1);
 .runes {
   font-family: $font-runic;
   letter-spacing: 0.08em;
-  color: var(--slate);
+  color: var(--icon);
 }
 
 .location {
@@ -200,7 +207,7 @@ $reveal-ease: cubic-bezier(0.65, 0, 0.35, 1);
   width: 16px;
   height: 16px;
   flex-shrink: 0;
-  color: var(--slate);
+  color: var(--icon);
 }
 
 .iconButton {
@@ -222,8 +229,8 @@ $reveal-ease: cubic-bezier(0.65, 0, 0.35, 1);
 .cv {
   @include pill;
   justify-self: start;
-  background: var(--abyss);
-  color: var(--ice);
+  background: var(--inverse-bg);
+  color: var(--inverse-fg);
   text-decoration: none;
 
   &:hover {

@@ -13,7 +13,15 @@
       property="og:description"
       content="Front-end developer and computer science student in Kutaisi, Georgia."
     />
-    <meta name="theme-color" content="#3b4e51" />
+    <meta name="theme-color" content="#3b4e51" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#101817" media="(prefers-color-scheme: dark)" />
+    <script>
+      // Apply a saved light/dark choice before first paint (see src/lib/theme.ts).
+      try {
+        var theme = localStorage.getItem('theme');
+        if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+      } catch (e) {}
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body>

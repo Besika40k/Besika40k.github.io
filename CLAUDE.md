@@ -18,6 +18,7 @@ Portfolio site for Besik Meskhia ("Jormungandr"). Vite + React 19 + TypeScript +
 
 - `src/styles/_tokens.scss` is auto-injected into every SCSS file; it must not emit CSS. Colours are CSS custom properties in `src/styles/global.scss`.
 - Palette comes from the owner's rsschool-cv site: slate `#3b4e51`, sage `#8aa3a6`, ice `#e9f1f2`, abyss `#1c261a`, ember `#e67e22`, rose `#b8938f`. Ember marks the active state; never use it for body text (use `--link`).
+- Light/dark: components use role variables (`--surface`, `--ink`, `--icon`, `--inverse-bg`, …), never raw palette colours for anything that must flip. Dark values live in the `dark-roles` mixin in `global.scss`; `src/lib/theme.ts` handles the OS preference plus the toggle override.
 - Fonts: Grenze (display), Schibsted Grotesk (body), Noto Serif/Sans Georgian (Georgian fallbacks), Noto Sans Runic (rune accents).
 - Artwork: use the owner's traced serpent and rune pattern (`src/assets/`). Don't draw new serpent or logo art; the owner rejected hand-drawn, cartoonish versions.
 - Motion: interface animations ignore `prefers-reduced-motion` on purpose (owner's call, `MotionConfig reducedMotion="never"`). Automatic, non-interactive motion (avatar entrance spin) and smooth scrolling still honour it.

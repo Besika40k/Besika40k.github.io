@@ -36,7 +36,7 @@ $icon-gap: 30px;
   // Larger hit area than the 24px glyph so the strip is easy to stop.
   padding: 6px;
   margin: -6px;
-  color: var(--slate);
+  color: var(--icon);
   transition:
     color 0.2s ease,
     transform 0.2s ease;

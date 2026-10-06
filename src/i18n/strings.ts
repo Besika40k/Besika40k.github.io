@@ -4,6 +4,8 @@ export const strings = {
   info: { en: 'Info', ka: 'ინფო' },
   contact: { en: 'Contact', ka: 'კონტაქტი' },
   language: { en: 'Language', ka: 'ენა' },
+  themeToDark: { en: 'Switch to dark theme', ka: 'მუქ თემაზე გადართვა' },
+  themeToLight: { en: 'Switch to light theme', ka: 'ღია თემაზე გადართვა' },
   localTime: { en: 'Local time in Kutaisi', ka: 'ადგილობრივი დრო ქუთაისში' },
   pinned: { en: 'Pinned', ka: 'მიმაგრებული' },
   stack: { en: 'Tools I work with', ka: 'ტექნოლოგიები, რომლებითაც ვმუშაობ' },

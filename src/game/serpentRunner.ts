@@ -2,6 +2,8 @@
 // a serpent slithers along the ground and jumps runestones (and, later, ravens).
 // Framework-free; the React wrapper only mounts it and passes labels.
 
+import { subscribeToTheme } from '@/lib/theme';
+
 export interface RunnerLabels {
   start: string;
   over: string;
@@ -414,6 +416,11 @@ export function createSerpentRunner(canvas: HTMLCanvasElement, initialLabels: Ru
   canvas.addEventListener('pointerdown', onPointerDown);
   window.addEventListener('pointerup', release);
 
+  // Colours come from CSS variables, so repaint idle frames when the theme flips.
+  const unsubscribeTheme = subscribeToTheme(() => {
+    if (state !== 'running') requestAnimationFrame(draw);
+  });
+
   // Draw once the rune font is ready so the first stones aren't blank.
   document.fonts?.load('16px "Noto Sans Runic"').then(draw, draw);
 
@@ -426,6 +433,7 @@ export function createSerpentRunner(canvas: HTMLCanvasElement, initialLabels: Ru
     redraw: draw,
     destroy() {
       cancelAnimationFrame(frame);
+      unsubscribeTheme();
       resizeObserver.disconnect();
       visibility.disconnect();
       window.removeEventListener('keydown', onKeyDown);
