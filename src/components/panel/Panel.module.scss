@@ -22,7 +22,7 @@
   width: min(80%, 88vh);
   translate: -50% -50%;
   color: var(--sage);
-  opacity: 0.16;
+  opacity: var(--watermark-opacity);
   pointer-events: none;
 
   // Phones: the panel is as tall as its content, so pin the ring near the top.

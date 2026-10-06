@@ -14,7 +14,7 @@
     inset: 0;
     z-index: -1;
     color: var(--ice);
-    opacity: 0.14;
+    opacity: var(--pattern-opacity);
     @include mask-art(url('@/assets/norse-symbols.svg'), 300px, repeat);
     pointer-events: none;
   }

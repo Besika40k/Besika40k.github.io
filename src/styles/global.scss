@@ -16,8 +16,47 @@
   --ink-muted: #46595c;
   --line: #c4d4d6;
   --link: #9a480b; // ember darkened to pass AA on ice
+  --icon: var(--slate); // small glyphs, marks and accents
+  --inverse-bg: var(--abyss);
+  --inverse-fg: var(--ice);
+  --scroll-thumb: var(--slate);
+  --scroll-thumb-hover: var(--abyss);
+  --pattern-opacity: 0.14; // rune pattern on the frame
+  --watermark-opacity: 0.16; // serpent behind the right panel
 
   color-scheme: light;
+}
+
+// Dark theme: follows the OS unless the visitor picked a theme with the toggle
+// (stored as data-theme on <html>). Brand colours stay; only the roles move.
+@mixin dark-roles {
+  --frame: #101817;
+  --surface: #1b2526;
+  --surface-raised: #212d2e;
+  --surface-sunken: #2b3839;
+  --ink: #e6efef;
+  --ink-muted: #a3b6b8;
+  --line: #354547;
+  --link: #f2a560;
+  --icon: #a7bcbf;
+  --inverse-bg: var(--ice);
+  --inverse-fg: var(--abyss);
+  --scroll-thumb: #4f6568;
+  --scroll-thumb-hover: var(--sage);
+  --pattern-opacity: 0.1;
+  --watermark-opacity: 0.1;
+
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    @include dark-roles;
+  }
+}
+
+:root[data-theme='dark'] {
+  @include dark-roles;
 }
 
 *,

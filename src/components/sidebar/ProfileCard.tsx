@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { motion, useReducedMotion, type Variants } from 'motion/react';
-import { Check, Copy, FileDown } from 'lucide-react';
+import { Check, Copy, FileDown, Moon, Sun } from 'lucide-react';
 import avatarPhoto from '@/assets/avatar.webp';
 import { profile } from '@/data/profile';
 import { useI18n } from '@/i18n/context';
 import { useNow } from '@/hooks/useNow';
 import { useCopy } from '@/hooks/useCopy';
 import { formatClock } from '@/lib/format';
+import { useTheme } from '@/lib/theme';
 import { BrandIcon, LinkedInIcon } from '../BrandIcon';
 import { Serpent } from '../Serpent';
 import type { SidebarView } from './TopBar';
@@ -24,6 +25,7 @@ export function ProfileCard({ view, variants }: ProfileCardProps) {
   const { t, l, locale, setLocale } = useI18n();
   const now = useNow();
   const reduceMotion = useReducedMotion();
+  const { theme, toggle: toggleTheme } = useTheme();
   const [playIntro] = useState(() => !introPlayed && !reduceMotion);
   useEffect(() => {
     introPlayed = true;
@@ -61,6 +63,15 @@ export function ProfileCard({ view, variants }: ProfileCardProps) {
               {code.toUpperCase()}
             </button>
           ))}
+          <button
+            type="button"
+            className={s.theme}
+            onClick={toggleTheme}
+            aria-label={theme === 'dark' ? t('themeToLight') : t('themeToDark')}
+            title={theme === 'dark' ? t('themeToLight') : t('themeToDark')}
+          >
+            {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
+          </button>
         </div>
 
         <time className={s.clock} dateTime={now.toISOString()} title={t('localTime')}>
