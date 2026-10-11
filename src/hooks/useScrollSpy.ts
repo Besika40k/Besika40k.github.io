@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 /**
  * Tracks which section is current inside `root` (or the window when root is null):
@@ -7,13 +7,16 @@ import { useEffect, useState } from 'react';
  */
 export function useScrollSpy(ids: string[], root: HTMLElement | null, enabled = true) {
   const [active, setActive] = useState(ids[0]);
+  const activeRef = useRef(active);
 
   useEffect(() => {
     if (!enabled) return;
     const target: HTMLElement | Window = root ?? window;
 
-    // Only a handful of sections, so measuring on every scroll event is cheap.
+    let frame = 0;
+
     const update = () => {
+      frame = 0;
       const viewTop = root ? root.getBoundingClientRect().top : 0;
       const viewHeight = root ? root.clientHeight : window.innerHeight;
       const scroller = root ?? document.scrollingElement!;
@@ -28,15 +31,24 @@ export function useScrollSpy(ids: string[], root: HTMLElement | null, enabled = 
           if (el && el.getBoundingClientRect().top - viewTop <= viewHeight / 3) current = id;
         }
       }
-      setActive(current);
+      if (current !== activeRef.current) {
+        activeRef.current = current;
+        setActive(current);
+      }
+    };
+
+    // Scroll events can fire several times per frame; measure once per frame.
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
     };
 
     update();
-    target.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
+    target.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
     return () => {
-      target.removeEventListener('scroll', update);
-      window.removeEventListener('resize', update);
+      cancelAnimationFrame(frame);
+      target.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
     };
   }, [ids, root, enabled]);
 

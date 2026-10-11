@@ -17,6 +17,7 @@
     opacity: var(--pattern-opacity);
     @include mask-art(url('@/assets/norse-symbols.svg'), 300px, repeat);
     pointer-events: none;
+    will-change: transform; // painted once, never repainted while columns scroll
   }
 
   @include wide {
