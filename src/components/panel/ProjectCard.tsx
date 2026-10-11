@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import { ArrowUpRight, ChevronDown, Lock } from 'lucide-react';
 import type { Project } from '@/data/types';
 import { useI18n } from '@/i18n/context';
-import { BrandIcon } from '../BrandIcon';
+import { projectCategories } from '@/data/projects';
 import s from './ProjectCard.module.scss';
 
 interface ProjectCardProps {
@@ -10,6 +10,9 @@ interface ProjectCardProps {
   open: boolean;
   onToggle: () => void;
 }
+
+const categoryLabel = (id: Project['category']) =>
+  projectCategories.find((cat) => cat.id === id)!.label;
 
 export function ProjectCard({ project, open, onToggle }: ProjectCardProps) {
   const { t, l } = useI18n();
@@ -21,13 +24,10 @@ export function ProjectCard({ project, open, onToggle }: ProjectCardProps) {
       {project.image && <img className={s.image} src={project.image} alt="" loading="lazy" />}
 
       <header className={s.header}>
-        {project.icon && (
-          <span className={s.icon}>
-            <BrandIcon name={project.icon} />
-          </span>
-        )}
+        <p className={s.eyebrow}>
+          {[l(categoryLabel(project.category)), project.year].filter(Boolean).join(' · ')}
+        </p>
         <h3 className={s.title}>{project.title}</h3>
-        {project.year && <span className={s.year}>{project.year}</span>}
       </header>
 
       <p className={s.summary}>{l(project.summary)}</p>

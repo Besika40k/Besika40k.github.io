@@ -6,35 +6,29 @@ import s from './SkillsSection.module.scss';
 
 export function SkillsSection() {
   const { t, l } = useI18n();
+  const tiles = [
+    ...skillGroups.map((group) => ({ id: group.id, label: l(group.label), items: group.items })),
+    {
+      id: 'spoken',
+      label: t('spokenLanguages'),
+      items: spokenLanguages.map((lang) => l(lang.name) + ' ' + l(lang.level)),
+    },
+  ];
+
   return (
     <Section id="skills" title={t('skills')}>
-      <dl className={s.groups}>
-        {skillGroups.map((group) => (
-          <div key={group.id} className={s.group}>
-            <dt className={s.label}>{l(group.label)}</dt>
-            <dd>
-              <ul className={s.chips}>
-                {group.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </dd>
-          </div>
-        ))}
-        <div className={s.group}>
-          <dt className={s.label}>{t('spokenLanguages')}</dt>
-          <dd>
-            <ul className={s.spoken}>
-              {spokenLanguages.map((language) => (
-                <li key={language.name.en}>
-                  <span>{l(language.name)}</span>
-                  <span className={s.level}>{l(language.level)}</span>
-                </li>
+      <ul className={s.tiles}>
+        {tiles.map((tile) => (
+          <li key={tile.id} className={s.tile}>
+            <h3 className={s.label}>{tile.label}</h3>
+            <ul className={s.items}>
+              {tile.items.map((item) => (
+                <li key={item}>{item}</li>
               ))}
             </ul>
-          </dd>
-        </div>
-      </dl>
+          </li>
+        ))}
+      </ul>
     </Section>
   );
 }

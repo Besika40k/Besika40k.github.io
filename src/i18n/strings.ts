@@ -30,6 +30,10 @@ export const strings = {
   },
 
   sections: { en: 'Sections', ka: 'სექციები' },
+  journey: { en: 'Journey', ka: 'გზა' },
+  work: { en: 'Work', ka: 'სამუშაო' },
+  study: { en: 'Study', ka: 'სწავლა' },
+  allProjects: { en: 'All', ka: 'ყველა' },
   experience: { en: 'Experience', ka: 'გამოცდილება' },
   projects: { en: 'Projects', ka: 'პროექტები' },
   skills: { en: 'Skills', ka: 'უნარები' },
