@@ -1,29 +1,27 @@
 import { useState } from 'react';
-import type { ProjectCategory } from '@/data/types';
+import type { ProjectFilter } from '@/data/types';
 import { useI18n } from '@/i18n/context';
 import type { StringKey } from '@/i18n/strings';
 import { scrollToId, useMediaQuery } from '@/hooks/useMediaQuery';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import { Serpent } from '../Serpent';
 import { AchievementsSection } from './AchievementsSection';
-import { EducationSection } from './EducationSection';
-import { ExperienceSection } from './ExperienceSection';
+import { JourneySection } from './JourneySection';
 import { ProjectsSection } from './ProjectsSection';
 import { SkillsSection } from './SkillsSection';
 import s from './Panel.module.scss';
 
 const sections: { id: string; label: StringKey }[] = [
-  { id: 'experience', label: 'experience' },
+  { id: 'journey', label: 'journey' },
   { id: 'projects', label: 'projects' },
   { id: 'skills', label: 'skills' },
-  { id: 'education', label: 'education' },
   { id: 'achievements', label: 'achievementsShort' },
 ];
 const sectionIds = sections.map((section) => section.id);
 
 interface PanelProps {
-  category: ProjectCategory;
-  onCategoryChange: (category: ProjectCategory) => void;
+  filter: ProjectFilter;
+  onFilterChange: (filter: ProjectFilter) => void;
   openProject: string | null;
   onToggleProject: (id: string) => void;
 }
@@ -59,15 +57,14 @@ export function Panel(props: PanelProps) {
 
       <div className={s.scroller} ref={setScroller}>
         <div className={s.content}>
-          <ExperienceSection />
+          <JourneySection />
           <ProjectsSection
-            category={props.category}
-            onCategoryChange={props.onCategoryChange}
+            filter={props.filter}
+            onFilterChange={props.onFilterChange}
             openId={props.openProject}
             onToggle={props.onToggleProject}
           />
           <SkillsSection />
-          <EducationSection />
           <AchievementsSection />
           <footer className={s.footer}>
             <p>{t('footer')}</p>

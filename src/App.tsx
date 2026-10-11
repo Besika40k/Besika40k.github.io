@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { AnimatePresence, MotionConfig, motion } from 'motion/react';
 import { projects } from '@/data/projects';
-import type { ProjectCategory } from '@/data/types';
+import type { ProjectFilter } from '@/data/types';
 import { scrollToId } from '@/hooks/useMediaQuery';
 import { ContactBar } from '@/components/sidebar/ContactBar';
 import { PinnedProjects } from '@/components/sidebar/PinnedProjects';
@@ -18,14 +18,15 @@ const viewStates = { initial: 'initial', animate: 'animate', exit: 'exit' } as c
 
 export default function App() {
   const [view, setView] = useState<SidebarView>('info');
-  const [category, setCategory] = useState<ProjectCategory>('frontend');
+  const [filter, setFilter] = useState<ProjectFilter>('all');
   const [openProject, setOpenProject] = useState<string | null>(null);
 
   // Pinned cards jump to the full project card on the right and open it.
   const focusProject = (id: string) => {
     const project = projects.find((p) => p.id === id);
     if (!project) return;
-    setCategory(project.category);
+    // Keep the current filter if it already shows this project.
+    if (filter !== 'all' && filter !== project.category) setFilter(project.category);
     setOpenProject(id);
     requestAnimationFrame(() => requestAnimationFrame(() => scrollToId(`project-${id}`)));
   };
@@ -57,9 +58,9 @@ export default function App() {
           </AnimatePresence>
         </aside>
         <Panel
-          category={category}
-          onCategoryChange={(next) => {
-            setCategory(next);
+          filter={filter}
+          onFilterChange={(next) => {
+            setFilter(next);
             setOpenProject(null);
           }}
           openProject={openProject}

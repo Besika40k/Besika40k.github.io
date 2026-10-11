@@ -25,42 +25,26 @@
 }
 
 .header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  display: grid;
+  gap: 4px;
 }
 
-.icon {
-  display: grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  flex-shrink: 0;
-  border-radius: $radius-sm;
-  background: var(--slate);
-  color: var(--ice);
-
-  svg {
-    width: 18px;
-    height: 18px;
-  }
+.eyebrow {
+  font-size: $text-xs;
+  color: var(--ink-muted);
 }
 
 .title {
   font-family: $font-display;
   font-weight: 600;
-  font-size: $text-2xl;
-  line-height: 1.1;
-}
-
-.year {
-  margin-left: auto;
-  font-size: $text-sm;
-  font-variant-numeric: tabular-nums;
-  color: var(--ink-muted);
+  font-size: $text-xl;
+  line-height: 1.15;
 }
 
 .summary {
+  font-size: $text-sm;
+  line-height: 1.5;
+  color: var(--ink-muted);
   text-wrap: pretty;
 }
 

@@ -21,6 +21,9 @@ export interface Experience {
 
 export type ProjectCategory = 'frontend' | 'ml' | 'backend' | 'misc';
 
+/** The projects filter: one category or everything. */
+export type ProjectFilter = ProjectCategory | 'all';
+
 export interface Project {
   id: string;
   title: string;

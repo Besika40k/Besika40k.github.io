@@ -1,41 +1,47 @@
 import { projectCategories, projects } from '@/data/projects';
-import type { ProjectCategory } from '@/data/types';
+import type { ProjectFilter } from '@/data/types';
 import { useI18n } from '@/i18n/context';
 import { ProjectCard } from './ProjectCard';
 import { Section } from './Section';
 import s from './ProjectsSection.module.scss';
 
 interface ProjectsSectionProps {
-  category: ProjectCategory;
-  onCategoryChange: (category: ProjectCategory) => void;
+  filter: ProjectFilter;
+  onFilterChange: (filter: ProjectFilter) => void;
   openId: string | null;
   onToggle: (id: string) => void;
 }
 
 export function ProjectsSection({
-  category,
-  onCategoryChange,
+  filter,
+  onFilterChange,
   openId,
   onToggle,
 }: ProjectsSectionProps) {
   const { t, l } = useI18n();
-  const visible = projects.filter((project) => project.category === category);
+  const visible = filter === 'all' ? projects : projects.filter((p) => p.category === filter);
+  const filters = [
+    { id: 'all' as const, label: t('allProjects'), count: projects.length },
+    ...projectCategories.map((cat) => ({
+      id: cat.id,
+      label: l(cat.label),
+      count: projects.filter((p) => p.category === cat.id).length,
+    })),
+  ];
 
   return (
     <Section id="projects" title={t('projects')}>
       <div className={s.filters} role="group" aria-label={t('projects')}>
-        {projectCategories.map((cat) => (
+        {filters.map((item) => (
           <button
-            key={cat.id}
+            key={item.id}
             type="button"
             className={s.filter}
-            aria-pressed={category === cat.id}
-            onClick={() => onCategoryChange(cat.id)}
+            aria-pressed={filter === item.id}
+            onClick={() => onFilterChange(item.id)}
           >
-            {l(cat.label)}
-            <span className={s.count}>
-              {projects.filter((project) => project.category === cat.id).length}
-            </span>
+            {item.label}
+            <span className={s.count}>{item.count}</span>
           </button>
         ))}
       </div>

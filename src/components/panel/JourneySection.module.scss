@@ -1,0 +1,115 @@
+$node: 32px;
+
+// Work stops are ember runes; study stops are outlined.
+@mixin node-kind {
+  &[data-kind='work'] .node,
+  &[data-kind='work']::before {
+    background: var(--ember);
+    color: var(--abyss);
+  }
+
+  &[data-kind='study'] .node,
+  &[data-kind='study']::before {
+    background: var(--surface);
+    border: 2px solid var(--icon);
+    color: var(--icon);
+  }
+}
+
+.legend {
+  display: flex;
+  gap: 16px;
+  margin-top: -12px;
+  font-size: $text-sm;
+  color: var(--ink-muted);
+}
+
+.key {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  &::before {
+    content: '';
+    box-sizing: border-box;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  @include node-kind;
+}
+
+// The spine: a vertical line with a rune stamped on each stop.
+.spine {
+  list-style: none;
+  margin-left: calc($node / 2);
+  border-left: 2px solid var(--line);
+}
+
+.stop {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  max-width: 68ch;
+  padding: 0 0 32px calc($node / 2 + 18px);
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+
+  @include node-kind;
+}
+
+.node {
+  position: absolute;
+  left: calc(-1 * $node / 2 - 1px);
+  top: 0;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  width: $node;
+  height: $node;
+  border-radius: 50%;
+  font-family: $font-runic;
+  font-size: 17px;
+  line-height: 1;
+}
+
+.when {
+  font-size: $text-sm;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-muted);
+  line-height: $node * 0.5;
+  padding-top: 0.25em;
+}
+
+.title {
+  font-family: $font-display;
+  font-weight: 600;
+  font-size: $text-2xl;
+  line-height: 1.15;
+  text-wrap: balance;
+
+  .stop[data-kind='study'] & {
+    font-weight: 500;
+    font-size: $text-xl;
+  }
+
+  :lang(ka) & {
+    font-size: $text-xl;
+    line-height: 1.35;
+  }
+}
+
+.points {
+  margin-top: 8px;
+  display: grid;
+  gap: 6px;
+  padding-left: 1.1em;
+  color: var(--ink-muted);
+
+  li::marker {
+    color: var(--ember);
+  }
+}
