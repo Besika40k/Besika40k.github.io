@@ -71,6 +71,10 @@
   display: grid;
   gap: 72px;
   padding: 36px clamp(20px, 4vw, 56px) 40px;
+  // The scroller is see-through (the watermark shows behind it), so at some display
+  // scalings Chrome repaints all visible content on every scroll frame. Its own layer
+  // lets scrolling just move the painted content.
+  will-change: transform;
 
   @include narrow {
     gap: 56px;
