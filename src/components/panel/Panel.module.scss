@@ -24,6 +24,9 @@
   color: var(--sage);
   opacity: var(--watermark-opacity);
   pointer-events: none;
+  // Own compositing layer: the masked SVG is rasterised once, not on every scroll frame.
+  will-change: transform;
+  contain: layout paint;
 
   // Phones: the panel is as tall as its content, so pin the ring near the top.
   @media (max-width: #{$bp-wide - 1px}) {
@@ -40,8 +43,7 @@
   overflow-x: auto;
   scrollbar-width: none;
   border-bottom: 1px solid var(--line);
-  background: color-mix(in srgb, var(--surface) 88%, transparent);
-  backdrop-filter: blur(8px);
+  background: var(--surface);
   border-radius: $radius-lg $radius-lg 0 0;
 
   @media (max-width: #{$bp-wide - 1px}) {
