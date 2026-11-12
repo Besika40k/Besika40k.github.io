@@ -9,6 +9,10 @@ $icon-gap: 30px;
   @media (min-width: $bp-wide) and (max-height: 860px) {
     padding: 12px 0;
   }
+
+  @include stacked {
+    padding: 12px 0;
+  }
 }
 
 // Scrolls right to left at roughly 27px/s; stops while a logo is hovered.

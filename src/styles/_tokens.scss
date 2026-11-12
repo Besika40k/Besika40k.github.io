@@ -32,6 +32,13 @@ $bp-narrow: 560px;
   }
 }
 
+// Below the two-column layout: everything stacks and the page scrolls.
+@mixin stacked {
+  @media (max-width: #{$bp-wide - 1px}) {
+    @content;
+  }
+}
+
 @mixin narrow {
   @media (max-width: $bp-narrow) {
     @content;
