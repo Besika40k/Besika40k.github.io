@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { ProjectFilter } from '@/data/types';
+import { shownAchievements } from '@/data/achievements';
 import { useI18n } from '@/i18n/context';
 import type { StringKey } from '@/i18n/strings';
 import { scrollToId, useMediaQuery } from '@/hooks/useMediaQuery';
@@ -11,11 +12,14 @@ import { ProjectsSection } from './ProjectsSection';
 import { SkillsSection } from './SkillsSection';
 import s from './Panel.module.scss';
 
+// Achievements stay out of the page and the nav until there is a real entry.
+const hasAchievements = shownAchievements.length > 0;
+
 const sections: { id: string; label: StringKey }[] = [
   { id: 'journey', label: 'journey' },
   { id: 'projects', label: 'projects' },
   { id: 'skills', label: 'skills' },
-  { id: 'achievements', label: 'achievementsShort' },
+  ...(hasAchievements ? [{ id: 'achievements', label: 'achievementsShort' as const }] : []),
 ];
 const sectionIds = sections.map((section) => section.id);
 
@@ -65,7 +69,7 @@ export function Panel(props: PanelProps) {
             onToggle={props.onToggleProject}
           />
           <SkillsSection />
-          <AchievementsSection />
+          {hasAchievements && <AchievementsSection />}
           <footer className={s.footer}>
             <p>{t('footer')}</p>
             <p>© {new Date().getFullYear()} Besik Meskhia</p>

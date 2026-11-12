@@ -51,7 +51,6 @@ export const strings = {
   myRole: { en: 'My role', ka: 'ჩემი როლი' },
   techStack: { en: 'Tech stack', ka: 'ტექნოლოგიები' },
   highlights: { en: 'Highlights', ka: 'მთავარი' },
-  comingSoon: { en: 'Details coming soon', ka: 'დეტალები მალე დაემატება' },
   footer: {
     en: 'Built with React, TypeScript and Sass. The serpent comes from my first CV site.',
     ka: 'შექმნილია React-ით, TypeScript-ითა და Sass-ით. გველი ჩემი პირველი CV საიტიდანაა.',
