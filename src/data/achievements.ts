@@ -1,6 +1,7 @@
 import type { Achievement } from './types';
 
-// Placeholders until the real entries are in. Remove `placeholder: true` once filled.
+// Placeholders until the real entries are in. Remove `placeholder: true` once filled:
+// placeholder entries are never shown, and the section appears with the first real one.
 export const achievements: Achievement[] = [
   {
     id: 'hackathon-1',
@@ -30,3 +31,6 @@ export const achievements: Achievement[] = [
     placeholder: true,
   },
 ];
+
+/** Entries ready to show on the site. */
+export const shownAchievements = achievements.filter((item) => !item.placeholder);

@@ -15,12 +15,6 @@
   border: 1px solid var(--line);
 }
 
-// Waiting for real content: dashed dusty-rose outline, no fill.
-.placeholder {
-  background: transparent;
-  border: 1.5px dashed var(--rose);
-}
-
 .title {
   font-family: $font-display;
   font-weight: 600;
