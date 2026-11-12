@@ -28,6 +28,27 @@
   }
 }
 
+// Stacked layout: keep the profile short so the content starts within the first screen.
+.card {
+  @include stacked {
+    gap: 14px;
+    padding-bottom: 18px;
+
+    .avatar {
+      width: 84px;
+    }
+
+    .bio {
+      font-size: $text-md;
+      max-width: none;
+    }
+
+    .body {
+      min-height: 0;
+    }
+  }
+}
+
 .head {
   display: grid;
   grid-template-columns: auto 1fr auto;

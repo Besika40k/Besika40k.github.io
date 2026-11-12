@@ -28,6 +28,23 @@
   overflow-y: auto;
   min-height: 0;
   @include themed-scrollbar;
+
+  // Stacked layout: one swipeable row instead of three stacked cards.
+  @include stacked {
+    grid-auto-flow: column;
+    grid-auto-columns: min(80%, 280px);
+    overflow: auto hidden;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    > li {
+      scroll-snap-align: start;
+    }
+  }
 }
 
 .item {
@@ -44,6 +61,13 @@
   transition: background-color 0.15s ease;
 
   &:hover {
+    background: var(--surface-sunken);
+  }
+
+  @include stacked {
+    grid-template-columns: 48px 1fr;
+    gap: 12px;
+    height: 100%;
     background: var(--surface-sunken);
   }
 }
